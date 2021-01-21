@@ -1,0 +1,138 @@
+@charset "ISO-8859-1";
+
+body {
+	overflow-x:hidden !important;
+	font-family:'Montserrat', sans-serif !important;
+	background-color:#f8f8f8 !important;
+	
+
+}
+
+footer {
+	
+	overflow-x:hidden !important;
+	font-family:'Montserrat', sans-serif !important;
+	overflow-y:hidden !important;
+}
+
+
+.box1 {
+  border: 1px solid #ebebeb;
+  min-height:80px;
+  max-height:200px;
+  /* display: contents; */
+  background-color:#ebebeb !important; 
+}
+
+
+.box {
+  border: 1px solid #999999;
+  min-height:80px;
+  max-height:200px;
+  /* display: contents; */
+  background-color:#999999 !important; 
+}
+
+
+.category {
+
+	border:2px solid #ebebeb !important;
+	background-color:#fefefe;
+	min-width:50px;
+}
+
+/* ----------Change Carousel Transition Speed  ------------*/
+
+.carousel-item-next, .carousel-item-prev, .carousel-item-active {
+	transition: transform 1.2s ease;
+}
+
+
+/* ----------CAROUSEL ------------*/
+
+#carousel {
+	box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1); 
+}
+
+
+
+/* Medium (md) devices (tablets, 768px down) */
+@media (max-width: 767.98px) {
+
+	.category_display {
+		display:none;
+	}
+	
+	
+	.caption {
+		margin-left:0px !important;
+	
+	}
+	
+}
+
+
+
+/* Small (sm) devices (landscape phones, 576px down) */
+@media (max-width:575.98px) {
+
+	.category_border_radius {
+		
+		border-radius:10px 10px 10px 10px
+	
+	}
+	
+}
+
+
+/* Small (sm) devices (landscape phones, 576px and up) */
+@media (min-width:575.99px) {
+
+	.category_border_radius1 {
+		
+		border-radius:10px 0px 0px 10px;
+	
+	}
+	
+	
+	.category_border_radius2 {
+		
+		border-radius:0px 10px 10px 0px;
+	
+	}
+	
+}
+
+
+
+.category_boxshadow {
+	
+	box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1); 
+}
+
+
+
+
+.emptyCart {
+  border: 1px solid #ebebeb;
+  min-height:200px;
+  max-height:400px;
+  min-width:200px;
+  max-width:400px;
+  border-radius:50%;
+  background-color:#fefefe !important;
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
+  
+  
+  /* display: contents; */
+  
+}
+
+.emptyCart1 {
+	font-size:120px;
+	margin-top:15%;	
+  	
+}
+

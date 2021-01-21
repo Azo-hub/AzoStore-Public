@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+
+<head th:replace="fragments1::html_head">
+
+
+
+</head>
+
+
+<body>
+
+	<div th:replace="fragments1::menubar" class = "w-100"></div>
+	
+	
+	<div class = "container-fluid">
+	
+		<div class = "row align-items-center">
+			
+			<div class = "col-md-1 category_display">
+			
+				<div class = "container">
+				
+					<div class = "row category category_boxshadow justify-content-center" style = "border-radius:10px 10px 0px 0px !important;">
+					
+						<div class = "col-md-12 text-center">
+						
+						<a th:href = "@{/searchByCategory(category = 'Laptop')}" th:classappend = "${activeLaptop}? 'active'" style = "text-decoration:none; color:inherit;"><span class = "fa fa-laptop" aria-hidden = "true" style = "font-size:25px;"></span></a>
+								
+						</div>
+					
+					</div>
+					
+					<div class = "row category category_boxshadow">
+					
+						<div class = "col-md-12 text-center">
+							<a th:href = "@{/searchByCategory(category = 'Phone')}" th:classappend = "${activePhone}? 'active'" style = "text-decoration:none; color:inherit;"><span class = "fa fa-mobile" aria-hidden = "true" style = "font-size:25px;"></span></a>
+							
+						</div>
+					
+					</div>
+					
+					<div class = "row category category_boxshadow" style = "border-radius:0px 0px 10px 10px !important;">
+					
+						<div class = "col-md-12 text-center">
+							<a th:href = "@{/searchByCategory(category = 'Headset')}" th:classappend = "${activeHeadset}? 'active'" style = "text-decoration:none; color:inherit;"><span class = "fa fa-headphones" aria-hidden = "true" style = "font-size:25px;"></span></a>
+							
+						</div>
+					
+					</div>
+				
+				</div>
+			
+			</div>
+			
+			<div class = "col-md-11">
+			
+			<!-- Image Carousel -->
+
+			<div id = "carousel" class = "carousel slide" data-ride = "carousel" data-interval = "5000" >
+
+			<!-- Carousel Content -->
+			<div class = "carousel-inner">
+	
+				<div class = "carousel-item active">
+					<img th:src = "@{/Images/static_Images/howard-bouchevereau-RSCirJ70NDM-unsplash.jpg}" height = "300"  alt = "" class = "w-100">
+					<div class = "carousel-caption" >
+							<div class = "container">
+								<div class = "row justify-content-center">
+									<div class = "col-md-8 py-3 px-0" style = "margin-top:-270px !important; color:#fefefe;">
+										<h1><strong>SAVE ON A NEW DELL FOR TRAVEL</strong></h1>
+										<h6><strong>The big thing is now already here.</strong></h6>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					
+					
+					
+				</div>
+				
+						
+		
+				<div class = "carousel-item">
+					<img th:src = "@{/Images/static_Images/michael-soledad-dJt4lxWy5nk-unsplash.jpg}" height = "300" alt = "" class = "w-100">
+				
+				</div>
+		
+				<div class = "carousel-item">
+					<img th:src = "@{/Images/static_Images/rahul-chakraborty-xsGxhtAsfSA-unsplash.jpg}" height = "300" alt = "" class = "w-100">
+					<div class = "carousel-caption" >
+							<div class = "container">
+								<div class = "row justify-content-start">
+									<div class = "col-md-8 py-3 px-0 text-left caption" style = "margin-left:-120px; margin-top:-270px !important; color:#302f35;">
+										<h1><strong>THE BEST SMARTPHONE</strong></h1>
+										<h6><strong>For your Money</strong></h6>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					
+				</div>
+				
+				<div class = "carousel-item">
+					<img th:src = "@{/Images/static_Images/samsung-memory-lYI66oToyCs-unsplash.jpg}" height = "300" alt = "" class = "w-100">
+				
+				</div>
+				
+			</div>
+	
+		<!-- End Carousel Content -->
+	
+	
+		<!-- Previuos & Next Buttons -->
+		<a href = "#carousel" class = "carousel-control-prev" role = "button" data-slide = "prev">
+		<span class = "carousel-control-prev-icon"></span>
+		
+		</a>
+	
+		<a href = "#carousel" class = "carousel-control-next" role = "button" data-slide = "next">
+		<span class = "carousel-control-next-icon" ></span>
+		
+		</a>
+	
+	
+		<!-- End Previous & Next Buttons -->
+	
+	
+</div>
+
+<!-- End Image Carousel -->
+			
+				
+			
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class = "container mt-5 mb-2">
+		<div class = "row">
+			<div class = "col-md-4 box1 text-center">
+				<br>
+				<p><i class = "fa fa-gift" style = "font-size:25px; color:#a47c4c;"></i></p>
+				<h4><strong>FREE SHIPPING</strong></h4>
+				<p>Free nationwide shipping</p>
+				<br>
+				
+			</div>
+			
+			<div class = "col-md-4 box text-center">
+				<br>
+				<p><i class = "fa fa-clock-o" style = "font-size:25px; color:#a47c4c;"></i></p>
+				<h4><strong>FAST DELIVERY</strong></h4>
+				<p>Free nationwide delivery</p>
+				<br>
+				
+				
+			</div>
+			
+			<div class = "col-md-4 box1 text-center">
+				<br>
+				<p><i class = "fa fa-money" style = "font-size:25px; color:#a47c4c;"></i></p>
+				<h4><strong>MONEY BACK</strong></h4>
+				<p>30 Days money back</p>
+				<br>
+				
+			</div>
+			
+					
+		</div>
+	</div>	
+	
+	
+				<!-- 	<a th:href = "@{/bookshelf(category = 'all')}" th:classappend = "${activeAll}? 'active'" class = "list-group-item">All</a>  -->
+					
+							
+					
+				
+			
+		
+			
+				
+	
+
+	<div class = "container mb-5">
+	
+		<div class = "row" style = "margin-top:90px; margin-buttom:0px;">
+					
+						<div class = "col-md-4 text-center">
+						
+							<div class = "container">
+							
+								<div class = "row">
+									
+									<div class = "col-sm-3 category_boxshadow category category_border_radius category_border_radius1" >
+									
+										<a th:href = "@{/}"  style = "text-decoration:none; color:inherit;"><strong>ALL</strong></a>
+									
+									</div>
+									
+									<div class = "col-sm-3 category_boxshadow category category_border_radius" >
+									
+										<a th:href = "@{/searchByCategory(category = 'Laptop')}" th:classappend = "${activeLaptop}? 'active'" style = "text-decoration:none; color:inherit;"><span class = "fa fa-laptop" aria-hidden = "true" style = "font-size:25px;"></span></a>
+									
+									</div>
+									
+									<div class = "col-sm-3 category_boxshadow category category_border_radius">
+									
+										<a th:href = "@{/searchByCategory(category = 'Phone')}" th:classappend = "${activePhone}? 'active'" style = "text-decoration:none; color:inherit;"><span class = "fa fa-mobile" aria-hidden = "true" style = "font-size:25px;"></span></a>			
+									
+									</div>
+									
+									<div class = "col-sm-3 category_boxshadow category  category_border_radius category_border_radius2">
+									
+										<a th:href = "@{/searchByCategory(category = 'Headset')}" th:classappend = "${activeHeadset}? 'active'" style = "text-decoration:none; color:inherit;"><span class = "fa fa-headphones" aria-hidden = "true" style = "font-size:25px;"></span></a>			
+									
+									</div>
+								
+								</div>
+							
+							</div>
+						
+							
+									
+							
+						
+						</div>
+						
+						
+						<div class = "col-md-4 text-center"></div>
+						
+						
+						<div class = "col-md-4 text-center"></div>
+					
+					</div>
+					
+	
+		<div class = "row">
+		
+		<div th:if="${emptyList}">
+					<h5 style="font-style: italic;">Oops, no result is found. Try
+						again later.</h5>
+		</div>
+	
+			<div class = "col-md-4 col-lg-4 card my-5 mx-3 " style = "width: 280px; background-color:#fefefe;" data-th-each="product : ${productList}" >
+				
+				<a th:href = "@{'/viewproductdetail/'+${product.id}}" style = "text-decoration:none; color:#302f35;"> 
+				 
+				<!-- <img class="card-img-top" th:src="@{/Images/product/}+${product.id}+'.png'"  height = "200px"  alt="Product Picture" /> -->
+				<img th:src="@{'https://res.cloudinary.com/azostore/image/upload/c_fill/product'+ ${product.id}+'.jpg'}" style = "max-width:250px; height:200px;"  alt="Product Picture"/>
+				</a>
+					<div class="card-body" style = "background-color:#fefefe;">
+					<a th:href = "@{'/viewproductdetail/'+${product.id}}" style = "text-decoration:none; color:#302f35;"><h5 class="card-title" th:text="${#strings.substring(product.name,0,10)}"></h5><span style = "color:#a47c4c;">more&hellip;</span></a>
+						<p><span style="text-decoration:line-through;"># <span th:text = "${#numbers.formatDecimal(product.listPrice,0,'COMMA',2,'POINT')}" ></span></span><br/><strong><span># </span><span th:text = "${#numbers.formatDecimal(product.ourPrice,0,'COMMA',2,'POINT')}" style = "font-size:20px;"></span></strong></p> 
+				<!-- 	<a th:href = "@{'/viewproductdetail/'+${product.id}}" style = "text-decoration:none; color:#302f35;">	<p class="card-text" th:utext = "${#strings.substring(product.description,0,50)}" style = "color:#302f35;"></p> <span style = "color:#a47c4c;">Read more&hellip;</span></a>   -->
+						
+					</div>
+				
+				
+			</div>
+		
+		</div>
+		
+		
+	</div>
+
+	
+
+
+	<div th:replace="fragments1::javascript"></div>
+
+</body>
+
+
+<footer th:replace="fragments1::html_foot"> </footer>
+
+</html>
