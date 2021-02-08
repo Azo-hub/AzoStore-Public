@@ -62,6 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			"/viewproductdetail/{id}",
 			"/product/**",
 			"/datatable/js/datatables.min.js",
+			"/viewproductdetails/**",
 			"/error"
 			
 			
