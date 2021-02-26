@@ -79,9 +79,18 @@ public class MyAccountController {
 	
 	@PostMapping("/newUser")
 	public String newUserPost (HttpServletRequest request, @ModelAttribute("email") String userEmail, @ModelAttribute("username") String username, Model model) throws Exception {
+		
 		model.addAttribute("classActiveNewAccount", true);
 		model.addAttribute("email", userEmail);
 		model.addAttribute("username", username);
+		
+		
+		if (!userEmail.contains("@")) {
+			
+			model.addAttribute("error", true);
+			return "myaccount";
+			
+		}
 		
 		
 		if (userService.findByUsername(username) != null) {

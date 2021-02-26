@@ -74,6 +74,9 @@
 						<div class="panel-group">
 							<div class="panel panel-default">
 								<div class="panel-body" style="margin-top: 20px;">
+									<div th:if = "${error}" style = "color:red" >
+										Please correct the problems below and re-send.
+										</div>
 									<div class="alert alert-info" th:if="${emailSent}">An
 										email has been sent to email address you just registered.
 										Please validate your email address and update your password
@@ -94,6 +97,8 @@
 												already exists. Choose a different one.</span> <input
 												required="required" type="text" class="form-control"
 												id="email" name="email" />
+												<p style = "color:red" th:if = "${error}">
+												Use a well formed email address</p>
 											<p style="color: #828282;">A valid email address. All
 												emails from the system will be sent to this address. The
 												email address is not made public and will only be used if
@@ -125,8 +130,10 @@
 						<div class="panel-group">
 							<div class="panel panel-default">
 								<div class="panel-body" style="margin-top: 20px;">
-									<div th:if="${param.error != null}" style="color: red;">Incorrect
-										Username or password</div>
+									<!--  	<div th:if="${param.error != null}" style="color: red;">
+									Incorrect
+										Username or password</div> -->
+									<div th:if = "${param.error != null}" style="color: red;">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</div>
 									<form th:action="@{/login}" method="post">
 										<div class="form-group">
 											<label for="newUsername">* Username</label> <input

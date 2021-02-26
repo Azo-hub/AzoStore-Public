@@ -2,6 +2,9 @@ package AzoStore.ControllerPackage;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,9 +14,16 @@ public class LoginController {
 
 	@GetMapping("/login")
 	public String login(Model model, HttpServletRequest request) {
-		model.addAttribute("classActiveLogin", true);
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		
-		return "myaccount";
+		if(authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+			
+			model.addAttribute("classActiveLogin", true);
+			
+			return "myaccount";
+		}
+		
+		return "redirect:/";
 	}
 
 }

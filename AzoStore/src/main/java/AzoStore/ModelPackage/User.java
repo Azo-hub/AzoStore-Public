@@ -1,6 +1,7 @@
 package AzoStore.ModelPackage;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -43,6 +44,14 @@ public class User implements UserDetails{
 	private String phone;
 	private boolean enabled=true;
 	
+	private Long failedAttempt;
+	
+	
+	private Date lockTime;
+	
+	
+	private boolean accountNonLocked = true;
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<UserShipping> userShippingList;
 	
@@ -83,7 +92,7 @@ public class User implements UserDetails{
 	@Override
 	public boolean isAccountNonLocked() {
 		// TODO Auto-generated method stub
-		return true;
+		return accountNonLocked;
 	}
 
 

@@ -29,6 +29,15 @@ public interface UserService {
 	
 	void setUserDefaultPayment (Long userPaymentId, User user);
 	
+	void increaseFailedAttempt(User user);
+
+	void lock(User user);
+
+	boolean unlock(User user);
+
+	void resetFailedAttempts(String username);
+
+	
 	
 	void updateUserShipping(UserShipping userShipping, User user);
 	

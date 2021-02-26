@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import AzoStore.CustomHandler.CustomLoginFailureHandler;
+import AzoStore.CustomHandler.CustomLoginSuccessHandler;
 import AzoStore.ModelPackage.SecurityUtility;
 import AzoStore.ServicePackage.UserSecurityService;
 
@@ -79,8 +81,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		
 		http
 			.csrf().disable().cors().disable()
-			.formLogin().failureUrl("/login?error").defaultSuccessUrl("/")
+			.formLogin().defaultSuccessUrl("/")
 			.loginPage("/login").permitAll()
+			.failureHandler(loginFailureHandler)
+			.successHandler(loginSuccessHandler)
 			.and()
 			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 			.logoutSuccessUrl("/?logout").deleteCookies("remember-me").permitAll()
@@ -95,5 +99,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		
 		auth.userDetailsService (userSecurityService).passwordEncoder (passwordEncoder());
 	}
+	
+	
+	@Autowired
+	private CustomLoginFailureHandler loginFailureHandler;
+	
+	@Autowired
+	private CustomLoginSuccessHandler loginSuccessHandler;
 
 }
