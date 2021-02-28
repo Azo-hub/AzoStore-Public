@@ -112,6 +112,10 @@ public class MyAccountController {
 		AzoStore.ModelPackage.User user = new AzoStore.ModelPackage.User();
 		user.setUsername(username);
 		user.setEmail(userEmail);
+		user.setAccountNonLocked(true);
+		//user.setLockTime(null);
+		user.setFailedAttempt((long) 0);
+		
 		
 		String password = SecurityUtility.randomPassword();
 		String encryptedPassword = SecurityUtility.passwordEncoder().encode(password);

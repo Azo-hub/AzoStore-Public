@@ -22,9 +22,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 
 public class User implements UserDetails{
 	
@@ -50,7 +53,7 @@ public class User implements UserDetails{
 	private Date lockTime;
 	
 	
-	private boolean accountNonLocked = true;
+	private boolean accountNonLocked;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<UserShipping> userShippingList;
