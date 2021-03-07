@@ -252,7 +252,7 @@ public class UserServiceImpl implements UserService {
 		user.setFailedAttempt((long) 0);
 		
 		user.setOauth_provider(provider);
-		user.setUsername(email);
+		user.setUsername(name);
 		
 		for (UserRole ur : userRoles) {
 			roleRepository.save(ur.getRole());
@@ -275,7 +275,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void updateUserAfterOAuthLoginSuccess(User user, String name, AuthenticationProvider provider) {
 		// TODO Auto-generated method stub
-		
+		user.setUsername(name);
 		user.setFirstname(name);
 		user.setOauth_provider(provider);
 		userRepository.save(user);

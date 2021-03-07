@@ -48,6 +48,10 @@ public interface UserService {
 	void createNewUserAfterOAuthLoginSuccess(Set<UserRole> userRoles, String email, String name,
 			AuthenticationProvider provider);
 
+	
+
+	
+
 	void updateUserAfterOAuthLoginSuccess(User user, String name, AuthenticationProvider provider);
 
 	
