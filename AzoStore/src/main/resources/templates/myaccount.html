@@ -107,7 +107,7 @@
 
 										</div>
 
-										<button type="submit" class="btn btn-primary">Create
+										<button type="submit" class="btn btn-success">Create
 											a new account.</button>
 
 									</form>
@@ -130,6 +130,19 @@
 						<div class="panel-group">
 							<div class="panel panel-default">
 								<div class="panel-body" style="margin-top: 20px;">
+									
+									<div class = "container-fluid">
+										<div class = "row">
+											<div class = "col-md-4">
+												<a type = "button" th:href = "@{/oauth2/authorization/google}" class="btn btn-outline-success">Login with Google</a>
+											</div>
+											<div class = "col-md-4"></div>
+											<div class = "col-md-4"></div>
+										</div>
+									</div>
+								
+								
+								<hr/>
 									<!--  	<div th:if="${param.error != null}" style="color: red;">
 									Incorrect
 										Username or password</div> -->
@@ -153,7 +166,7 @@
 										
 										<p><input type = "checkbox" name = "remember-me" /> Remember me on this device</p>
 
-										<button type="submit" class="btn btn-primary">Log in</button>
+										<button type="submit" class="btn btn-success">Log in</button>
 
 									</form>
 								</div>
@@ -188,7 +201,7 @@
 										</div>
 
 
-										<button type="submit" class="btn btn-primary">Submit</button>
+										<button type="submit" class="btn btn-success">Submit</button>
 
 									</form>
 								</div>

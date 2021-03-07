@@ -20,6 +20,8 @@ import AzoStore.CustomHandler.CustomLoginFailureHandler;
 import AzoStore.CustomHandler.CustomLoginSuccessHandler;
 import AzoStore.ModelPackage.SecurityUtility;
 import AzoStore.ServicePackage.UserSecurityService;
+import AzoStore.oauth2.CustomOAuth2UserService;
+import AzoStore.oauth2.OAuth2LoginSuccessHandler;
 
 
 @Configuration
@@ -72,7 +74,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			"/product/**",
 			"/datatable/js/datatables.min.js",
 			"/viewproductdetails/**",
-			"/error"
+			"/error",
+			"/oauth2/**"
 			
 			
 	};
@@ -92,6 +95,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.loginPage("/login").permitAll()
 			.failureHandler(loginFailureHandler)
 			.successHandler(loginSuccessHandler)
+			.and()
+			.oauth2Login()
+				.loginPage("/login")
+				.userInfoEndpoint().userService(oAuth2UserService)
+				.and()
+				.successHandler(oAuth2LoginSuccessHandler)
 			.and()
 			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 			.logoutSuccessUrl("/?logout") /*.deleteCookies("remember-me") */ .permitAll()
@@ -125,5 +134,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
 	private CustomLoginSuccessHandler loginSuccessHandler;
+	
+	@Autowired
+	private CustomOAuth2UserService oAuth2UserService;
+	
+	@Autowired
+	private OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler;
 
 }

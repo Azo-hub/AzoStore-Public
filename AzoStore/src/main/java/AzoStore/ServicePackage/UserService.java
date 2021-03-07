@@ -2,12 +2,14 @@ package AzoStore.ServicePackage;
 
 import java.util.Set;
 
+import AzoStore.ModelPackage.AuthenticationProvider;
 import AzoStore.ModelPackage.PasswordResetToken;
 import AzoStore.ModelPackage.User;
 import AzoStore.ModelPackage.UserBilling;
 import AzoStore.ModelPackage.UserPayment;
 import AzoStore.ModelPackage.UserRole;
 import AzoStore.ModelPackage.UserShipping;
+
 
 
 public interface UserService {
@@ -42,5 +44,11 @@ public interface UserService {
 	void updateUserShipping(UserShipping userShipping, User user);
 	
 	void setUserDefaultShipping (Long defaultShippingId, User user);
+	
+	void createNewUserAfterOAuthLoginSuccess(Set<UserRole> userRoles, String email, String name,
+			AuthenticationProvider provider);
+
+	void updateUserAfterOAuthLoginSuccess(User user, String name, AuthenticationProvider provider);
+
 	
 }

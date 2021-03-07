@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import AzoStore.ModelPackage.AuthenticationProvider;
 import AzoStore.ModelPackage.PasswordResetToken;
 import AzoStore.ModelPackage.ShoppingCart;
 import AzoStore.ModelPackage.User;
@@ -238,7 +239,47 @@ public class UserServiceImpl implements UserService {
 		userRepository.updateFailedAttempt(0, username);
 		
 	}
-	
+
+	@Override
+	public void createNewUserAfterOAuthLoginSuccess(Set<UserRole> userRoles, String email, String name, AuthenticationProvider provider) {
+		// TODO Auto-generated method stub
+		
+		User user = new User();
+		user.setEmail(email);
+		user.setFirstname(name);
+		user.setAccountNonLocked(true);
+		//user.setLockTime(null);
+		user.setFailedAttempt((long) 0);
+		
+		user.setOauth_provider(provider);
+		user.setUsername(email);
+		
+		for (UserRole ur : userRoles) {
+			roleRepository.save(ur.getRole());
+		}
+		
+		user.getUserRoles().addAll(userRoles);
+		
+		ShoppingCart shoppingCart = new ShoppingCart();
+		shoppingCart.setUser(user);
+		user.setShoppingCart(shoppingCart);
+		
+		user.setUserShippingList (new ArrayList <UserShipping> ());
+		
+		user.setUserPaymentList (new ArrayList <UserPayment> ());
+
+		userRepository.save(user);
+
+	}
+
+	@Override
+	public void updateUserAfterOAuthLoginSuccess(User user, String name, AuthenticationProvider provider) {
+		// TODO Auto-generated method stub
+		
+		user.setFirstname(name);
+		user.setOauth_provider(provider);
+		userRepository.save(user);
+	}
 
 	
 
