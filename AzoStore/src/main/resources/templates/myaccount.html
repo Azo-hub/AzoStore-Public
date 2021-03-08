@@ -131,23 +131,13 @@
 							<div class="panel panel-default">
 								<div class="panel-body" style="margin-top: 20px;">
 									
-									<div class = "container-fluid">
-										<div class = "row">
-											<div class = "col-md-4">
-												<a type = "button" th:href = "@{/oauth2/authorization/google}" class="btn btn-outline-success">Login with Google</a>
-											</div>
-											<div class = "col-md-4"></div>
-											<div class = "col-md-4"></div>
-										</div>
-									</div>
-								
-								
-								<hr/>
+																	
+							
 									<!--  	<div th:if="${param.error != null}" style="color: red;">
 									Incorrect
 										Username or password</div> -->
 									<div th:if = "${param.error != null}" style="color: red;">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</div>
-									<form th:action="@{/login}" method="post">
+									<form th:action="@{/login}" method="post" class = "mb-5">
 										<div class="form-group">
 											<label for="newUsername">* Username</label> <input
 												required="required" type="text" class="form-control"
@@ -169,6 +159,30 @@
 										<button type="submit" class="btn btn-success">Log in</button>
 
 									</form>
+									
+									<hr style = "margin-bottom:-10px;" />
+									<div class = "container-fluid">
+										<div class = "row">
+											<div class = "col-md-12">
+												
+												<div align = "center" style = "margin-top:-1px;"><strong>OR</strong></div>
+											</div>
+										</div>
+									
+										<div class = "row my-3">
+											<div class = "col-md-4" align = "center">
+												<a type = "button" th:href = "@{/oauth2/authorization/google}" class="btn btn-outline-success">Login with Google</a>
+											</div>
+											<div class = "col-md-4">
+												
+											</div>
+											<div class = "col-md-4"></div>
+										</div>
+									</div>
+								
+									
+									
+									
 								</div>
 							</div>
 						</div>
