@@ -1,16 +1,16 @@
 package AzoStore;
 
-import java.util.HashMap;
+
 import java.util.HashSet;
-import java.util.Map;
+
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import com.cloudinary.SingletonManager;
@@ -25,7 +25,7 @@ import AzoStore.ServicePackage.UserService;
 
 @SpringBootApplication
 @EnableScheduling
-public class AzoStoreApplication {
+public class AzoStoreApplication implements CommandLineRunner {
 	@Autowired
 	private UserService userService;
 	
@@ -51,6 +51,56 @@ public class AzoStoreApplication {
 	
 	
 		
+	@Override
+	public void run(String... args) throws Exception {
+		
+		
+		
+		User editorUser = new User();
+		editorUser.setFirstname("Ridwan");
+		editorUser.setLastname("Azeez");
+		editorUser.setUsername("editor1");
+		editorUser.setEnabled(true);
+		editorUser.setAccountNonLocked(true);
+		editorUser.setFailedAttempt((long) 0);
+		editorUser.setPassword(SecurityUtility.passwordEncoder().encode("editor1"));
+		editorUser.setEmail("haycodeeditor101@gmail.com");
+		Set<UserRole> userRoles1 = new HashSet<>();
+		Role role2 = new Role();
+		role2.setRoleId(2);
+		role2.setName("EDITOR");
+		userRoles1.add(new UserRole(editorUser, role2));
+		
+		userService.createUser(editorUser, userRoles1);
+		
+
+		
+		
+		
+		User adminUser = new User();
+		adminUser.setFirstname("Ridwan");
+		adminUser.setLastname("Azeez");
+		adminUser.setUsername("admin1");
+		adminUser.setEnabled(true);
+		adminUser.setAccountNonLocked(true);
+		adminUser.setFailedAttempt((long) 0);
+		adminUser.setPassword(SecurityUtility.passwordEncoder().encode("admin1"));
+		adminUser.setEmail("haycodea843@gmail.com");
+		Set<UserRole> userRoles = new HashSet<>();
+		Role role1 = new Role();
+		role1.setRoleId(3);
+		role1.setName("ADMIN");
+		userRoles.add(new UserRole(adminUser, role1));
+		
+		userService.createUser(adminUser, userRoles);
+		
+		
+		
+		
+		
+				
+	}
+
 
 	
 		

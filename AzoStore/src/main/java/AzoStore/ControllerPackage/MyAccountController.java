@@ -123,7 +123,7 @@ public class MyAccountController {
 		
 		Role role = new Role();
 		role.setRoleId(1);
-		role.setName("ROLE_USER");
+		role.setName("USER");
 		Set<UserRole> userRoles = new HashSet<>();
 		userRoles.add(new UserRole (user, role));
 		userService.createUser(user, userRoles);
