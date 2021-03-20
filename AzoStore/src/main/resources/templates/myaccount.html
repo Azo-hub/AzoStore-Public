@@ -131,6 +131,7 @@
 							<div class="panel panel-default">
 								<div class="panel-body" style="margin-top: 20px;">
 									
+									<!-- <marquee>Hello! Please Login</marquee> -->
 																	
 							
 									<!--  	<div th:if="${param.error != null}" style="color: red;">
@@ -170,13 +171,12 @@
 										</div>
 									
 										<div class = "row my-3">
-											<div class = "col-md-4" align = "center">
-												<a type = "button" th:href = "@{/oauth2/authorization/google}" class="btn btn-outline-success">Login with Google</a>
+											<div class = "col-md-12" align = "center">
+												<span><a type = "button" th:href = "@{/oauth2/authorization/google}" class="btn btn-outline-success" ><i class = "fa fa-google" aria-hidden = "true" ></i>&nbsp;&nbsp;
+												&nbsp;&nbsp;&nbsp;&nbsp; Login with Google</a>
+												</span>
 											</div>
-											<div class = "col-md-4">
-												
-											</div>
-											<div class = "col-md-4"></div>
+											
 										</div>
 									</div>
 								
