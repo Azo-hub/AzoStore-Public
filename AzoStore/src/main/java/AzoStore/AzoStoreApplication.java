@@ -25,13 +25,14 @@ import AzoStore.ServicePackage.UserService;
 
 @SpringBootApplication
 @EnableScheduling
-public class AzoStoreApplication implements CommandLineRunner {
+public class AzoStoreApplication  /*  implements CommandLineRunner  */  {
+	
+	/*
 	@Autowired
 	private UserService userService;
 	
+	*/
 
-	
-	
 	
 
 	public static void main(String[] args) {
@@ -49,7 +50,7 @@ public class AzoStoreApplication implements CommandLineRunner {
 		SpringApplication.run(AzoStoreApplication.class, args);
 	}
 	
-	
+	/*
 		
 	@Override
 	public void run(String... args) throws Exception {
@@ -102,7 +103,7 @@ public class AzoStoreApplication implements CommandLineRunner {
 	}
 
 
-	
+	*/
 		
 	 
 	
