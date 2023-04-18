@@ -2,8 +2,8 @@ package com.AzoStore001.ServicePackage;
 
 import org.springframework.stereotype.Service;
 
-import AzoStore1.ModelPackage.ShippingAddress;
-import AzoStore1.ModelPackage.UserShipping;
+import com.AzoStore001.ModelPackage.ShippingAddress;
+import com.AzoStore001.ModelPackage.UserShipping;
 
 
 

@@ -6,14 +6,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import AzoStore1.ModelPackage.CartItem;
-import AzoStore1.ModelPackage.Order;
-import AzoStore1.ModelPackage.Product;
-import AzoStore1.ModelPackage.ProductToCartItem;
-import AzoStore1.ModelPackage.ShoppingCart;
-import AzoStore1.ModelPackage.User;
-import AzoStore1.RepositoryPackage.CartItemRepository;
-import AzoStore1.RepositoryPackage.ProductToCartItemRepository;
+import com.AzoStore001.ModelPackage.CartItem;
+import com.AzoStore001.ModelPackage.Order;
+import com.AzoStore001.ModelPackage.Product;
+import com.AzoStore001.ModelPackage.ProductToCartItem;
+import com.AzoStore001.ModelPackage.ShoppingCart;
+import com.AzoStore001.ModelPackage.User;
+import com.AzoStore001.RepositoryPackage.CartItemRepository;
+import com.AzoStore001.RepositoryPackage.ProductToCartItemRepository;
 
 
 
@@ -34,6 +34,7 @@ public class CartItemServiceImpl implements CartItemService {
 		return cartItemRepository.findByShoppingCart(shoppingCart);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public CartItem updateCartItem(CartItem cartItem) {
 		// TODO Auto-generated method stub

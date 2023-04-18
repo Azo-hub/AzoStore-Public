@@ -6,9 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import AzoStore1.ModelPackage.CartItem;
-import AzoStore1.ModelPackage.ShoppingCart;
-import AzoStore1.RepositoryPackage.ShoppingCartRepository;
+import com.AzoStore001.ModelPackage.CartItem;
+import com.AzoStore001.ModelPackage.ShoppingCart;
+import com.AzoStore001.RepositoryPackage.ShoppingCartRepository;
 
 
 

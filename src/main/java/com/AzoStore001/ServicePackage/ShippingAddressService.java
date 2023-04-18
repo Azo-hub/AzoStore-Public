@@ -1,7 +1,7 @@
 package com.AzoStore001.ServicePackage;
 
-import AzoStore1.ModelPackage.ShippingAddress;
-import AzoStore1.ModelPackage.UserShipping;
+import com.AzoStore001.ModelPackage.ShippingAddress;
+import com.AzoStore001.ModelPackage.UserShipping;
 
 public interface ShippingAddressService {
 	ShippingAddress setByUserShipping(UserShipping userShipping, ShippingAddress shippingAddress);

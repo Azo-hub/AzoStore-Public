@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import AzoStore1.ModelPackage.Product;
-import AzoStore1.ModelPackage.User;
-import AzoStore1.ServicePackage.ProductService;
-import AzoStore1.ServicePackage.UserService;
+import com.AzoStore001.ModelPackage.Product;
+import com.AzoStore001.ModelPackage.User;
+import com.AzoStore001.ServicePackage.ProductService;
+import com.AzoStore001.ServicePackage.UserService;
 
 
 
@@ -31,7 +31,6 @@ public class ProductDetailController {
 	
 	
 	@GetMapping("/viewproductdetail/{id}")
-		//public String bookDetails(@PathParam("id") Long id, Model model, Principal principal) {
 	public String productDetails(
 			@ModelAttribute("addProductSuccess") String addProductSuccess,
 			@PathVariable(name = "id") Long id, Model model,  Principal principal) {

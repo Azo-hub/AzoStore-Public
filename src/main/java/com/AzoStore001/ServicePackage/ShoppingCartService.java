@@ -1,6 +1,6 @@
 package com.AzoStore001.ServicePackage;
 
-import AzoStore1.ModelPackage.ShoppingCart;
+import com.AzoStore001.ModelPackage.ShoppingCart;
 
 public interface ShoppingCartService {
 	

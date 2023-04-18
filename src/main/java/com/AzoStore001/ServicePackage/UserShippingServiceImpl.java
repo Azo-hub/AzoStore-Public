@@ -3,8 +3,8 @@ package com.AzoStore001.ServicePackage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import AzoStore1.ModelPackage.UserShipping;
-import AzoStore1.RepositoryPackage.UserShippingRepository;
+import com.AzoStore001.ModelPackage.UserShipping;
+import com.AzoStore001.RepositoryPackage.UserShippingRepository;
 
 
 

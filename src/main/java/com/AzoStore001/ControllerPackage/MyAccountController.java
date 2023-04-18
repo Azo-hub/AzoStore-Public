@@ -21,13 +21,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import AzoStore1.ModelPackage.MailConstructor;
-import AzoStore1.ModelPackage.PasswordResetToken;
-import AzoStore1.ModelPackage.Role;
-import AzoStore1.ModelPackage.SecurityUtility;
-import AzoStore1.ModelPackage.UserRole;
-import AzoStore1.ServicePackage.UserSecurityService;
-import AzoStore1.ServicePackage.UserService;
+import com.AzoStore001.ModelPackage.MailConstructor;
+import com.AzoStore001.ModelPackage.PasswordResetToken;
+import com.AzoStore001.ModelPackage.Role;
+import com.AzoStore001.ModelPackage.SecurityUtility;
+import com.AzoStore001.ModelPackage.User;
+import com.AzoStore001.ModelPackage.UserRole;
+import com.AzoStore001.ServicePackage.UserSecurityService;
+import com.AzoStore001.ServicePackage.UserService;
 
 
 @Controller
@@ -63,7 +64,7 @@ public class MyAccountController {
 			return "redirect:/badRequest";
 		}
 		
-		AzoStore1.ModelPackage.User user = passToken.getUser();
+		User user = passToken.getUser();
 		String username = user.getUsername();
 		UserDetails userDetails = userSecurityService.loadUserByUsername(username);
 		
@@ -101,7 +102,7 @@ public class MyAccountController {
 		}
 		
 		
-		AzoStore1.ModelPackage.User user = new AzoStore1.ModelPackage.User();
+		User user = new User();
 		user.setUsername(username);
 		user.setEmail(userEmail);
 		

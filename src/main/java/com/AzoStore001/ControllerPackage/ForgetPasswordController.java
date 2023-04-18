@@ -12,10 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import AzoStore1.ModelPackage.MailConstructor;
-import AzoStore1.ModelPackage.SecurityUtility;
-import AzoStore1.ModelPackage.User;
-import AzoStore1.ServicePackage.UserService;
+import com.AzoStore001.ModelPackage.MailConstructor;
+import com.AzoStore001.ModelPackage.SecurityUtility;
+import com.AzoStore001.ModelPackage.User;
+import com.AzoStore001.ServicePackage.UserService;
 
 
 @Controller

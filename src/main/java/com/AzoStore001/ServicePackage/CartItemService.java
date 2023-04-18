@@ -2,11 +2,11 @@ package com.AzoStore001.ServicePackage;
 
 import java.util.List;
 
-import AzoStore1.ModelPackage.CartItem;
-import AzoStore1.ModelPackage.Order;
-import AzoStore1.ModelPackage.Product;
-import AzoStore1.ModelPackage.ShoppingCart;
-import AzoStore1.ModelPackage.User;
+import com.AzoStore001.ModelPackage.CartItem;
+import com.AzoStore001.ModelPackage.Order;
+import com.AzoStore001.ModelPackage.Product;
+import com.AzoStore001.ModelPackage.ShoppingCart;
+import com.AzoStore001.ModelPackage.User;
 
 
 
@@ -24,8 +24,6 @@ public interface CartItemService {
 	
 	CartItem findById(Long id);
 	
-	//void removeCartItem(CartItem cartItem);
-
 	void removeCartItem(Long id);
 
 	void removeproductToCartItem(Long id);

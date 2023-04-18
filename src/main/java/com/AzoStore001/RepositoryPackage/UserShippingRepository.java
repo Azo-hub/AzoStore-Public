@@ -2,7 +2,7 @@ package com.AzoStore001.RepositoryPackage;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import AzoStore1.ModelPackage.UserShipping;
+import com.AzoStore001.ModelPackage.UserShipping;
 
 
 
