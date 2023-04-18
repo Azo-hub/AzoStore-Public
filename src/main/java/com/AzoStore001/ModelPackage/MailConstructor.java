@@ -2,18 +2,17 @@ package com.AzoStore001.ModelPackage;
 
 import java.util.Locale;
 
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Component;
-
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
+
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeMessage;
 
 @Component
 public class MailConstructor {

@@ -1,6 +1,6 @@
 package com.AzoStore001.ServicePackage;
 
-import AzoStore1.ModelPackage.UserPayment;
+import com.AzoStore001.ModelPackage.UserPayment;
 
 public interface UserPaymentService {
 	

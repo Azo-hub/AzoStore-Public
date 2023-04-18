@@ -2,12 +2,12 @@ package com.AzoStore001.ServicePackage;
 
 import java.util.Set;
 
-import AzoStore1.ModelPackage.PasswordResetToken;
-import AzoStore1.ModelPackage.User;
-import AzoStore1.ModelPackage.UserBilling;
-import AzoStore1.ModelPackage.UserPayment;
-import AzoStore1.ModelPackage.UserRole;
-import AzoStore1.ModelPackage.UserShipping;
+import com.AzoStore001.ModelPackage.PasswordResetToken;
+import com.AzoStore001.ModelPackage.User;
+import com.AzoStore001.ModelPackage.UserBilling;
+import com.AzoStore001.ModelPackage.UserPayment;
+import com.AzoStore001.ModelPackage.UserRole;
+import com.AzoStore001.ModelPackage.UserShipping;
 
 
 

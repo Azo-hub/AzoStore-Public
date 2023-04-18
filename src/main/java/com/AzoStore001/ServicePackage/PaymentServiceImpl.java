@@ -2,8 +2,8 @@ package com.AzoStore001.ServicePackage;
 
 import org.springframework.stereotype.Service;
 
-import AzoStore1.ModelPackage.Payment;
-import AzoStore1.ModelPackage.UserPayment;
+import com.AzoStore001.ModelPackage.Payment;
+import com.AzoStore001.ModelPackage.UserPayment;
 
 
 

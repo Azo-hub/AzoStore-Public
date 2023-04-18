@@ -12,18 +12,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import AzoStore1.ModelPackage.CartItem;
-import AzoStore1.ModelPackage.NGConstants;
-import AzoStore1.ModelPackage.Order;
-import AzoStore1.ModelPackage.User;
-import AzoStore1.ModelPackage.UserBilling;
-import AzoStore1.ModelPackage.UserPayment;
-import AzoStore1.ModelPackage.UserShipping;
-import AzoStore1.ServicePackage.CartItemService;
-import AzoStore1.ServicePackage.OrderService;
-import AzoStore1.ServicePackage.UserPaymentService;
-import AzoStore1.ServicePackage.UserService;
-import AzoStore1.ServicePackage.UserShippingService;
+import com.AzoStore001.ModelPackage.CartItem;
+import com.AzoStore001.ModelPackage.NGConstants;
+import com.AzoStore001.ModelPackage.Order;
+import com.AzoStore001.ModelPackage.User;
+import com.AzoStore001.ModelPackage.UserBilling;
+import com.AzoStore001.ModelPackage.UserPayment;
+import com.AzoStore001.ModelPackage.UserShipping;
+import com.AzoStore001.ServicePackage.CartItemService;
+import com.AzoStore001.ServicePackage.OrderService;
+import com.AzoStore001.ServicePackage.UserPaymentService;
+import com.AzoStore001.ServicePackage.UserService;
+import com.AzoStore001.ServicePackage.UserShippingService;
 
 
 

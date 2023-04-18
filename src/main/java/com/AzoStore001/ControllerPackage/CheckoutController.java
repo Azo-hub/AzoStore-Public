@@ -15,27 +15,27 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import AzoStore1.ModelPackage.BillingAddress;
-import AzoStore1.ModelPackage.CartItem;
-import AzoStore1.ModelPackage.MailConstructor;
-import AzoStore1.ModelPackage.NGConstants;
-import AzoStore1.ModelPackage.Order;
-import AzoStore1.ModelPackage.Payment;
-import AzoStore1.ModelPackage.ShippingAddress;
-import AzoStore1.ModelPackage.ShoppingCart;
-import AzoStore1.ModelPackage.User;
-import AzoStore1.ModelPackage.UserBilling;
-import AzoStore1.ModelPackage.UserPayment;
-import AzoStore1.ModelPackage.UserShipping;
-import AzoStore1.ServicePackage.BillingAddressService;
-import AzoStore1.ServicePackage.CartItemService;
-import AzoStore1.ServicePackage.OrderService;
-import AzoStore1.ServicePackage.PaymentService;
-import AzoStore1.ServicePackage.ShippingAddressService;
-import AzoStore1.ServicePackage.ShoppingCartService;
-import AzoStore1.ServicePackage.UserPaymentService;
-import AzoStore1.ServicePackage.UserService;
-import AzoStore1.ServicePackage.UserShippingService;
+import com.AzoStore001.ModelPackage.BillingAddress;
+import com.AzoStore001.ModelPackage.CartItem;
+import com.AzoStore001.ModelPackage.MailConstructor;
+import com.AzoStore001.ModelPackage.NGConstants;
+import com.AzoStore001.ModelPackage.Order;
+import com.AzoStore001.ModelPackage.Payment;
+import com.AzoStore001.ModelPackage.ShippingAddress;
+import com.AzoStore001.ModelPackage.ShoppingCart;
+import com.AzoStore001.ModelPackage.User;
+import com.AzoStore001.ModelPackage.UserBilling;
+import com.AzoStore001.ModelPackage.UserPayment;
+import com.AzoStore001.ModelPackage.UserShipping;
+import com.AzoStore001.ServicePackage.BillingAddressService;
+import com.AzoStore001.ServicePackage.CartItemService;
+import com.AzoStore001.ServicePackage.OrderService;
+import com.AzoStore001.ServicePackage.PaymentService;
+import com.AzoStore001.ServicePackage.ShippingAddressService;
+import com.AzoStore001.ServicePackage.ShoppingCartService;
+import com.AzoStore001.ServicePackage.UserPaymentService;
+import com.AzoStore001.ServicePackage.UserService;
+import com.AzoStore001.ServicePackage.UserShippingService;
 
 
 
@@ -206,19 +206,7 @@ public class CheckoutController {
 		model.addAttribute("cartItemList", cartItemList);
 		
 		
-		/* if (billingSameAsShipping.equals("true")) {
-			
-		 *	billingAddress.setBillingAddressName(shippingAddress.getShippingAddressCity());
-		*	billingAddress.setBillingAddressStreet1(shippingAddress.getShippingAddressStreet1());
-		*	billingAddress.setBillingAddressStreet2(shippingAddress.getShippingAddressStreet2());
-		*	billingAddress.setBillingAddressCity(shippingAddress.getShippingAddressCity());
-		*	billingAddress.setBillingAddressState(shippingAddress.getShippingAddressState());
-		*	billingAddress.setBillingAddressCountry(shippingAddress.getShippingAddressCountry());
-		*	billingAddress.setBillingAddressZipCode(shippingAddress.getShippingAddressZipCode());
-		*	
-		* }
 		
-		*/
 		
 		  if(shippingAddress.getShippingAddressStreet1().isEmpty() || 
 				shippingAddress.getShippingAddressCity().isEmpty() || 

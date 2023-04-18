@@ -1,6 +1,6 @@
 package com.AzoStore001.ServicePackage;
 
-import AzoStore1.ModelPackage.UserShipping;
+import com.AzoStore001.ModelPackage.UserShipping;
 
 public interface UserShippingService {
 	

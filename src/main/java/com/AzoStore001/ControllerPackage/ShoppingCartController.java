@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import AzoStore1.ModelPackage.CartItem;
-import AzoStore1.ModelPackage.Product;
-import AzoStore1.ModelPackage.ShoppingCart;
-import AzoStore1.ModelPackage.User;
-import AzoStore1.ServicePackage.CartItemService;
-import AzoStore1.ServicePackage.ProductService;
-import AzoStore1.ServicePackage.ShoppingCartService;
-import AzoStore1.ServicePackage.UserService;
+import com.AzoStore001.ModelPackage.CartItem;
+import com.AzoStore001.ModelPackage.Product;
+import com.AzoStore001.ModelPackage.ShoppingCart;
+import com.AzoStore001.ModelPackage.User;
+import com.AzoStore001.ServicePackage.CartItemService;
+import com.AzoStore001.ServicePackage.ProductService;
+import com.AzoStore001.ServicePackage.ShoppingCartService;
+import com.AzoStore001.ServicePackage.UserService;
 
 
 

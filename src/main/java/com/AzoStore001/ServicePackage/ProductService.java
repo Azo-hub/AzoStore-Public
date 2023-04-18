@@ -2,7 +2,7 @@ package com.AzoStore001.ServicePackage;
 
 import java.util.List;
 
-import AzoStore1.ModelPackage.Product;
+import com.AzoStore001.ModelPackage.Product;
 
 
 

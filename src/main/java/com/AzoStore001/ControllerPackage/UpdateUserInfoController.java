@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import AzoStore1.ModelPackage.SecurityUtility;
-import AzoStore1.ModelPackage.User;
-import AzoStore1.RepositoryPackage.UserRepository;
-import AzoStore1.ServicePackage.UserSecurityService;
-import AzoStore1.ServicePackage.UserService;
+import com.AzoStore001.ModelPackage.SecurityUtility;
+import com.AzoStore001.ModelPackage.User;
+import com.AzoStore001.RepositoryPackage.UserRepository;
+import com.AzoStore001.ServicePackage.UserSecurityService;
+import com.AzoStore001.ServicePackage.UserService;
 
 
 

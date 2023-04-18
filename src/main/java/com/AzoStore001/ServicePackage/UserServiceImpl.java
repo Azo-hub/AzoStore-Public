@@ -9,18 +9,18 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import AzoStore1.ModelPackage.PasswordResetToken;
-import AzoStore1.ModelPackage.ShoppingCart;
-import AzoStore1.ModelPackage.User;
-import AzoStore1.ModelPackage.UserBilling;
-import AzoStore1.ModelPackage.UserPayment;
-import AzoStore1.ModelPackage.UserRole;
-import AzoStore1.ModelPackage.UserShipping;
-import AzoStore1.RepositoryPackage.PasswordResetTokenRepository;
-import AzoStore1.RepositoryPackage.RoleRepository;
-import AzoStore1.RepositoryPackage.UserPaymentRepository;
-import AzoStore1.RepositoryPackage.UserRepository;
-import AzoStore1.RepositoryPackage.UserShippingRepository;
+import com.AzoStore001.ModelPackage.PasswordResetToken;
+import com.AzoStore001.ModelPackage.ShoppingCart;
+import com.AzoStore001.ModelPackage.User;
+import com.AzoStore001.ModelPackage.UserBilling;
+import com.AzoStore001.ModelPackage.UserPayment;
+import com.AzoStore001.ModelPackage.UserRole;
+import com.AzoStore001.ModelPackage.UserShipping;
+import com.AzoStore001.RepositoryPackage.PasswordResetTokenRepository;
+import com.AzoStore001.RepositoryPackage.RoleRepository;
+import com.AzoStore001.RepositoryPackage.UserPaymentRepository;
+import com.AzoStore001.RepositoryPackage.UserRepository;
+import com.AzoStore001.RepositoryPackage.UserShippingRepository;
 
 
 

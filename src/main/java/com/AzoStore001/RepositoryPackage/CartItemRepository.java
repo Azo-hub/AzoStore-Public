@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import AzoStore1.ModelPackage.CartItem;
-import AzoStore1.ModelPackage.Order;
-import AzoStore1.ModelPackage.ShoppingCart;
+import com.AzoStore001.ModelPackage.CartItem;
+import com.AzoStore001.ModelPackage.Order;
+import com.AzoStore001.ModelPackage.ShoppingCart;
 
 
 
