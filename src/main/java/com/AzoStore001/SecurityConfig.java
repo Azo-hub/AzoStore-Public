@@ -1,25 +1,33 @@
 package com.AzoStore001;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
+import org.springframework.security.web.server.authentication.logout.DelegatingServerLogoutHandler;
+import org.springframework.security.web.server.authentication.logout.SecurityContextServerLogoutHandler;
+import org.springframework.security.web.server.authentication.logout.WebSessionServerLogoutHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.AzoStore001.ModelPackage.SecurityUtility;
-import com.AzoStore001.ServicePackage.UserSecurityService;
-
+import com.AzoStore001.Model.SecurityUtility;
+import com.AzoStore001.Service.UserSecurityService;
 
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity (prePostEnabled = true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter{
+@EnableMethodSecurity
+public class SecurityConfig {
 	@Autowired
 	private Environment env;
 	
@@ -28,9 +36,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	private UserSecurityService userSecurityService;
 	
 	
-	private BCryptPasswordEncoder passwordEncoder () {
-		return SecurityUtility.passwordEncoder();
-	}
+	private BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return SecurityUtility.passwordEncoder();
+    }
+	
+	
 	
 	
 	private static final String[] PUBLIC_MATCHERS = {
@@ -68,33 +78,51 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			
 			
 	};
-	
-	
-	@SuppressWarnings({ "deprecation", "removal" })
-	protected void configure (HttpSecurity http) throws Exception {
+
+
+    
+	@Bean
+    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception  {
+		
+		AuthenticationManagerBuilder authenticationManagerBuilder = http
+                .getSharedObject(AuthenticationManagerBuilder.class);
+
+        authenticationManagerBuilder.userDetailsService(userSecurityService).passwordEncoder(bCryptPasswordEncoder());
+       
 		
 		http
-			.authorizeRequests()
-			.requestMatchers(PUBLIC_MATCHERS)
-			.permitAll().anyRequest().authenticated();
+			.authorizeHttpRequests(auth -> {
+				auth.requestMatchers(PUBLIC_MATCHERS).permitAll();
+				auth.anyRequest().authenticated();
+			});
+
+
+         http
+         	.csrf(csrf -> csrf.disable())
+         	.cors(cors -> cors.disable())
+         	.formLogin(form -> 
+         		form
+         			.failureUrl("/login?error").defaultSuccessUrl("/")
+     				.loginPage("/login")
+     				.permitAll())
+         	
+         	.logout(logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+            .logoutSuccessUrl("/?logout").deleteCookies("remember-me").permitAll())
+            .rememberMe(withDefaults());
+         
+         return http.build();
 		
-		http
-			.csrf().disable().cors().disable()
-			.formLogin().failureUrl("/login?error").defaultSuccessUrl("/")
-			.loginPage("/login").permitAll()
-			.and()
-			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-			.logoutSuccessUrl("/?logout").deleteCookies("remember-me").permitAll()
-			.and()
-			.rememberMe();
 	}
 	
 	
+	@Bean
+    AuthenticationManager authenticationManagerBean(AuthenticationConfiguration authenticationConfiguration)
+            throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
+    }
 	
-	@Autowired
-	public void configureGlobal (AuthenticationManagerBuilder auth) throws Exception {
-		
-		auth.userDetailsService (userSecurityService).passwordEncoder (passwordEncoder());
-	}
+	
+	
+	
 
 }
