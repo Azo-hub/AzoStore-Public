@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,15 +34,11 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/adminportal")
+@PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
 public class AdminPortalProductController {
 	
 	private final Cloudinary cloudinary = Singleton.getCloudinary();
-	private Api api;
 	String version = "";
-	
-	//@Autowired
-    //private CloudinaryService cloudinaryService;
-
 	
 	@Autowired
 	private ProductRepository productRepository;
@@ -71,14 +68,10 @@ public class AdminPortalProductController {
 		try {
 			byte[] bytes = productImage.getBytes();
 			String name = "product" +product.getId();
-			File file = new File(name);
-			FileOutputStream fos = new FileOutputStream(file);
-			fos.write(bytes);
-	        fos.close();
+		
 			Map uploadResult = cloudinary.uploader().upload(bytes, ObjectUtils.asMap("invalidate",true));
             String publicId = uploadResult.get("public_id").toString();
-            /*version += "/v"+ uploadResult.get("version").toString();
-            model.addAttribute("version",version);*/
+          
             cloudinary.uploader().rename(publicId, name, 
             		  ObjectUtils.asMap("invalidate",true));
             
@@ -93,14 +86,6 @@ public class AdminPortalProductController {
 	
 	
 	
-	/*
-	 * 
-    @PostMapping("/upload")
-    public String uploadFile() {
-        
-        return "File uploaded successfully: File path :  " + url;
-    }
-	 */
 
 	@GetMapping("/product/productList")
 	public String productList(Model model) {
@@ -116,15 +101,6 @@ public class AdminPortalProductController {
 		Product product = productService.getOne(id);
 		model.addAttribute("product", product);
 		
-		/*ApiResponse result = api.resources(ObjectUtils.asMap(
-				  "type", "upload", 
-				  "prefix", "product"+product.getId()));
-		
-		model.addAttribute("result", result); 
-		
-		version += "";
-		model.addAttribute("version", version);
-		model.addAttribute("cloudinary", cloudinary);*/
 		
 		return "adminproductInfo";
 
@@ -167,8 +143,7 @@ public class AdminPortalProductController {
 						ObjectUtils.asMap(
 								"invalidate",true));
 	            String publicId = uploadResult.get("public_id").toString();
-	           /* version += "/v"+ uploadResult.get("version").toString();
-	            model.addFlashAttribute("version",version);*/
+	    
 	            cloudinary.uploader().rename(publicId, name, 
 	            		  ObjectUtils.asMap("invalidate",true));
 	            
@@ -182,21 +157,7 @@ public class AdminPortalProductController {
 
 	}
 
-	/*
-	 * @PostMapping("/remove") public String remove(@ModelAttribute("id") String id,
-	 * Model model) {
-	 * 
-	 * productService.removeOne(Long.parseLong(id.substring(8))); List<Product>
-	 * productList = productService.findAll(); model.addAttribute("productList",
-	 * productList);
-	 * 
-	 * return "redirect:/product/productList";
-	 * 
-	 * 
-	 * }
-	 * 
-	 */
-
+	
 	@GetMapping("/delete/{id}")
 	public String deleteProduct(@PathVariable(name = "id") Long id,
 			@ModelAttribute("product") Product product) {
@@ -213,10 +174,7 @@ public class AdminPortalProductController {
 			
 		}
 		
-		
-		// List<Product> productList = productService.findAll();
-		// model.addAttribute("productList", productList);
-
+	
 		return "redirect:/adminportal/product/productList";
 
 	}

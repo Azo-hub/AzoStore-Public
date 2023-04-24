@@ -2,6 +2,7 @@ package com.AzoStore001.Model;
 
 
 
+import java.io.Serializable;
 import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -16,10 +17,14 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Product {
+public class Product implements Serializable {
 	
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private Long id;

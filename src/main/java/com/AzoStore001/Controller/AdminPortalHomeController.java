@@ -1,11 +1,13 @@
 package com.AzoStore001.Controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/adminportal")
+@PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
 public class AdminPortalHomeController {
 	
 	@GetMapping
@@ -13,7 +15,6 @@ public class AdminPortalHomeController {
 		
 		return "adminhome";
 	}
-	
 	
 	
 

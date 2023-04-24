@@ -136,17 +136,12 @@ public class ShoppingCartController {
 	
 	
 	@GetMapping("/deleteCartItem/{id}")
-	public String deleteCartItem (
-			@PathVariable(name = "id") Long id,
-			
-			@ModelAttribute("cartItem") CartItem cartItem
-			
-			) {
+	public String deleteCartItem (@PathVariable(name = "id") Long id, @ModelAttribute("cartItem") CartItem cartItem ) {
 		
 		//cartItem = cartItemService.findById(id);
 		
-		cartItemService.removeproductToCartItem(id+1);
-		//cartItemService.removeCartItem(id);
+		cartItemService.removeproductToCartItem(id);
+		cartItemService.removeCartItem(id);
 		return "redirect:/shoppingCart/cart";
 		
 				
