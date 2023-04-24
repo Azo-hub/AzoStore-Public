@@ -1,5 +1,7 @@
 package com.AzoStore001.Model;
 
+import java.io.Serializable;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,9 +13,15 @@ import lombok.Data;
 
 @Entity
 @Data
-public class ProductToCartItem {
+public class ProductToCartItem implements Serializable {
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;

@@ -51,7 +51,7 @@
 
 			<div class="col-sm-12 col-md-12">
 
-				<form action="/checkout" method="post" id="paymentForm">
+				<form action="/checkout" method="post"> <!-- id="paymentForm" -->
 
 					<div class="container-fluid">
 
@@ -70,8 +70,8 @@
 
 										<div class="panel panel-default">
 											<div class="panel-body">
-												<button type="submit" class="btn btn-warning btn-block" onclick="payWithPaystack()">Place
-													your order</button>
+												<button type="submit" class="btn btn-warning btn-block" >Place
+													your order</button> <!-- onclick="payWithPaystack()" -->
 												<p style="font-size: smaller;">
 													By placing your order, you agree to Azo Store <a href="">privacy</a>
 													notice and <a href="">conditions</a> of use.
@@ -385,7 +385,7 @@
 													<div class="col-sm-12 col-md-12 text-right">
 
 														<a data-toggle="collapse" data-parent="#accordion"
-															class="btn btn-warning pull-right" href="#reviewItems">Next</a>
+															class="btn btn-warning pull-right" href="#paymentInfo">Next</a>
 
 
 													</div>
@@ -407,7 +407,276 @@
 
 								<!-- Start of payment information row2 -->
 								
+								<div class="row panel panel-default">
+									<div class="col-sm-12 col-md-12">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+												<a data-toggle="collapse" data-parent="#accordion"
+													href="#paymentInfo"> 2. Payment Information </a>
+											</h4>
+										</div>
 
+										<div id="paymentInfo" class="panel-collapse collapse">
+											<div class="panel-body">
+
+												<!-- subrow1 -->
+												<div class="row">
+													<div class="col-sm-12 col-md-12">
+														<table class="table table-sm">
+															<thead>
+																<tr>
+																	<th>Available Credit Card</th>
+																	<th>Operations</th>
+
+																</tr>
+															</thead>
+
+															<tbody>
+																<tr th:each="userPayment : ${userPaymentList}">
+																	<td th:text="${userPayment.cardName}"></td>
+																	<td><a
+																		th:href="@{/setPaymentMethod(userPaymentId = ${userPayment.id})}">use
+																			this payment</a></td>
+
+																</tr>
+															</tbody>
+														</table>
+
+														<span class="fa fa-credit-card" style="font-size: 40;"></span>
+														<span class="fa fa-cc-mastercard" style="font-size: 40;"></span>
+														<span class="fa fa-cc-visa" style="font-size: 40;"></span>
+
+													</div>
+
+												</div>
+
+
+												<!-- subrow2 -->
+												<div class="row">
+													<div class="col-sm-12 col-md-12">
+														<div class="form-group">
+															<label for="cardType">* Select Card Type: </label> <select
+																class="form-control" id="cardType" name="type"
+																th:value="${payment.type}">
+																<option value="visa">Visa</option>
+																<option value="mastercard">Mastercard</option>
+																<option value="discover">Discover</option>
+																<option value="amex">American Express</option>
+															</select>
+														</div>
+													</div>
+												</div>
+
+
+
+
+
+												<!-- subrow3 -->
+												<div class="row">
+													<div class="col-sm-12 col-md-12">
+														<div class="form-group">
+															<label for="cardHolder">* Card Holder Name:</label> <input
+																type="text" class="form-control" id="cardHolder"
+																required="required" placeholder="Card Holder Name"
+																th:name="holderName" th:value="${payment.holderName}" />
+														</div>
+													</div>
+												</div>
+
+
+												<!-- subrow4 -->
+												<div class="row">
+													<div class="col-sm-12 col-md-12">
+														<div class="form-group">
+															<label for="cardNumber">* Card Number:</label>
+															<div class="input-group">
+																<input type="tel" class="form-control" id="cardNumber"
+																	required="required" placeholder="Valid Card Number"
+																	th:name="cardNumber" th:value="${payment.cardNumber}"
+																	aria-describedby="basic-addon1" />
+																<div class="input-group-append">
+																	<span class="input-group-text" id="basic-addon1"><i
+																		class="fa fa-credit-card" aria-hidden="true"
+																		style="font-size: 25px;"></i></span>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+
+
+												<!-- subrow5 -->
+												<div class="row">
+													<div class="col-sm-12 col-md-12">
+														<div class="form-group">
+															<label>* Expiration Date</label> <select
+																class="form-control" name="expiryMonth"
+																required="required" th:value="${payment.expiryMonth}">
+
+																<option disabled="disabled">---Month---</option>
+																<option value="01">Jan (01)</option>
+																<option value="02">Feb (02)</option>
+																<option value="03">Mar (03)</option>
+																<option value="04">Apr (04)</option>
+																<option value="05">May (05)</option>
+																<option value="06">Jun (06)</option>
+																<option value="07">Jul (07)</option>
+																<option value="08">Aug (08)</option>
+																<option value="09">Sep (09)</option>
+																<option value="10">Oct (10)</option>
+																<option value="11">Nov (11)</option>
+																<option value="12">Dec (12)</option>
+
+
+															</select> <select class="form-control" name="expiryYear"
+																th:value="${payment.expiryYear}">
+																<option disabled="disabled">---Year---</option>
+																<option value="2021">2021</option>
+																<option value="2022">2022</option>
+																<option value="2023">2023</option>
+																<option value="2024">2024</option>
+																<option value="2025">2025</option>
+																<option value="2026">2026</option>
+																<option value="2027">2027</option>
+																<option value="2028">2028</option>
+																<option value="2029">2029</option>
+																<option value="2030">2030</option>
+																<option value="2031">2031</option>
+																<option value="2032">2032</option>
+																<option value="2033">2033</option>
+
+															</select>
+
+														</div>
+
+
+														<div class="form-group">
+															<label for="cardCVC">CV Code</label> <input id="cardCVC"
+																type="tel" class="form-control" placeholder="CVC"
+																th:name="cvc" th:value="${payment.cvc}" />
+
+														</div>
+													</div>
+												</div>
+
+
+
+												<!-- subrow6 -->
+												<div class="row">
+													<div class="col-sm-12 col-md-12">
+														<div class="checkbox">
+															<label><input id="theSameAsShippingAddress"
+																type="checkbox" name="billingSameAsShipping"
+																value="true" /> The same as shipping address </label>
+														</div>
+													</div>
+												</div>
+
+
+
+												<!-- End of payment information  -->
+
+
+
+												<!-- Start of Billing Address -->
+
+												<!-- subrow7 -->
+												<div class="row">
+													<div class="col-sm-12 col-md-12">
+														<div class="form-group">
+															<label for="billingName">* Name</label> <input
+																type="text" class="form-control billingAddress"
+																id="billingName" placeholder="Receiver Name"
+																th:name="billingAddressName" required="required"
+																th:value="${billingAddress.billingAddressName}" />
+
+														</div>
+													</div>
+												</div>
+
+
+												<!-- subrow8 -->
+												<div class="row">
+													<div class="col-sm-12 col-md-12">
+														<div class="form-group">
+															<label for="billingAddress">* Street Address</label> <input
+																type="text" class="form-control billingAddress"
+																id="billingAddress" placeholder="Street Address 1"
+																th:name="billingAddressStreet1" required="required"
+																th:value="${billingAddress.billingAddressStreet1}" /> <input
+																type="text" class="form-control billingAddress"
+																id="billingAddress" placeholder="Street Address 2"
+																th:name="billingAddressStreet2"
+																th:value="${billingAddress.billingAddressStreet2}" />
+														</div>
+													</div>
+												</div>
+
+
+
+
+												<!-- subrow9 -->
+												<div class="row">
+													<div class="col-sm-4 col-md-4">
+														<div class="form-group">
+															<label for="billingCity">* City</label> <input
+																type="text" class="form-control billingAddress"
+																id="billingCity" placeholder="Billing City"
+																th:name="billingAddressCity" required="required"
+																th:value="${billingAddress.billingAddressCity}" />
+														</div>
+													</div>
+
+													<div class="col-sm-4 col-md-4">
+														<div class="form-group">
+															<label for="billingState">* State</label> <select
+																id="billingState" class="form-control billingAddress"
+																th:name="billingAddressState"
+																th:value="${billingAddress.billingAddressState}"
+																required="required">
+																<option value="" disabled="disabled">Please
+																	select an option</option>
+																<option th:each="state : ${stateList}"
+																	th:text="${state}"
+																	th:selected="(${billingAddress.billingAddressState} == ${state})"></option>
+															</select>
+
+														</div>
+													</div>
+
+
+													<div class="col-sm-4 col-md-4">
+														<div class="form-group">
+															<label for="billingZipcode">* Zipcode</label> <input
+																type="text" class="form-control billingAddress"
+																id="billingZipcode" placeholder="Billing Zipcode"
+																th:name="billingAddressZipCode" required="required"
+																th:value="${billingAddress.billingAddressZipCode}" />
+														</div>
+													</div>
+
+												</div>
+
+
+
+
+												<!-- subrow10 -->
+												<div class="row">
+													<div class="col-sm-12 col-md-12">
+														<a data-toggle="collapse" data-parent="#accordion"
+															class="btn btn-warning pull-right" href="#reviewItems">Next</a>
+													</div>
+												</div>
+
+
+
+
+
+											</div>
+										</div>
+									</div>
+								</div>
+								
 
 								<!--review and shipping info row3 -->
 								<div class="row">
@@ -415,7 +684,7 @@
 										<div class="panel-heading">
 											<h4 class="panel-title">
 												<a data-toggle="collapse" data-parent="#accordion"
-													href="#reviewItems"> 2. Review Items and Shipping </a>
+													href="#reviewItems"> 3. Review Items and Shipping </a>
 											</h4>
 										</div>
 
@@ -523,8 +792,8 @@
 													</table>
 
 													<br /> <br />
-													<button type="submit" class="btn btn-warning btn-block" onclick="payWithPaystack()">Place
-														your order</button>
+													<button type="submit" class="btn btn-warning btn-block" >Place
+														your order</button> <!-- onclick="payWithPaystack()" -->
 													<p style="font-size: smaller;">
 														By placing your order, you agree to Azo Store <a href="">privacy</a>
 														notice and <a href="">conditions</a> of use.
@@ -567,7 +836,7 @@
 	<div th:replace="fragments1::javascript"></div>
 	
 	
-	<script src="https://js.paystack.co/v1/inline.js"></script> 
+<!-- <script src="https://js.paystack.co/v1/inline.js"></script> 
 
 <script>
 const paymentForm = document.getElementById('paymentForm');
@@ -580,7 +849,7 @@ function payWithPaystack(e) {
 
   let handler = PaystackPop.setup({
 
-    key: '**********************', // Replace with your public key
+    key: '*****************', // Replace with your public key
 
     email: document.getElementById("email-address").value,
 
@@ -626,6 +895,9 @@ function payWithPaystack(e) {
 
 </script>
 	
+ -->
+
+
 	
 
 </body>

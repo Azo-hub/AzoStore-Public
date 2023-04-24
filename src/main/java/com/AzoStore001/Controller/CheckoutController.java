@@ -192,10 +192,9 @@ public class CheckoutController {
 	@PostMapping("/checkout")
 	public String checkoutPost(
 			@ModelAttribute("shippingAddress") ShippingAddress shippingAddress,
-			//@ModelAttribute("billingAddress") BillingAddress billingAddress,
-			//@ModelAttribute("payment") Payment payment,
-			//@ModelAttribute("billingSameAsShipping") String billingSameAsShipping,
-			
+			@ModelAttribute("billingAddress") BillingAddress billingAddress,
+			@ModelAttribute("payment") Payment payment,
+			@ModelAttribute("billingSameAsShipping") String billingSameAsShipping,
 			@ModelAttribute("shippingMethod") String shippingMethod,
 			Principal principal,
 			Model model) {
@@ -205,10 +204,20 @@ public class CheckoutController {
 		List<CartItem> cartItemList = cartItemService.findByShoppingCart(shoppingCart);
 		model.addAttribute("cartItemList", cartItemList);
 		
+		if (billingSameAsShipping.equals("true")) {
+			
+			billingAddress.setBillingAddressName(shippingAddress.getShippingAddressCity());
+			billingAddress.setBillingAddressStreet1(shippingAddress.getShippingAddressStreet1());
+			billingAddress.setBillingAddressStreet2(shippingAddress.getShippingAddressStreet2());
+			billingAddress.setBillingAddressCity(shippingAddress.getShippingAddressCity());
+			billingAddress.setBillingAddressState(shippingAddress.getShippingAddressState());
+			billingAddress.setBillingAddressCountry(shippingAddress.getShippingAddressCountry());
+			billingAddress.setBillingAddressZipCode(shippingAddress.getShippingAddressZipCode());
+			
+		}
 		
 		
-		
-		  if(shippingAddress.getShippingAddressStreet1().isEmpty() || 
+		if(shippingAddress.getShippingAddressStreet1().isEmpty() || 
 				shippingAddress.getShippingAddressCity().isEmpty() || 
 				shippingAddress.getShippingAddressState().isEmpty() ||
 				shippingAddress.getShippingAddressName().isEmpty() ||
@@ -225,9 +234,7 @@ public class CheckoutController {
 		}
 		
 		User user = userService.findByUsername(principal.getName());
-		//Order order = orderService.createOrder(shoppingCart, shippingAddress, billingAddress, payment, shippingMethod, user);
-		
-		Order order = orderService.createOrder(shoppingCart, shippingAddress, shippingMethod, user);
+		Order order = orderService.createOrder(shoppingCart, shippingAddress, billingAddress, payment, shippingMethod, user);
 		
 		mailSender.send(mailConstructor.constructOrderConfirmationEmail(user, order, Locale.ENGLISH));
 		shoppingCartService.clearShoppingCart(shoppingCart);
@@ -380,8 +387,6 @@ public class CheckoutController {
 	}
 		
 	}
-	
-	
-	
+		
 	
 }
