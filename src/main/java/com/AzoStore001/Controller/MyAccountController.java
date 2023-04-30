@@ -5,6 +5,8 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -28,16 +30,11 @@ import com.AzoStore001.Model.UserRole;
 import com.AzoStore001.Service.UserSecurityService;
 import com.AzoStore001.Service.UserService;
 
-import jakarta.servlet.http.HttpServletRequest;
+
 
 
 @Controller
 public class MyAccountController {
-	
-	//private User user;
-	
-	
-	
 	
 	@Autowired
 	private JavaMailSender mailSender;
@@ -81,9 +78,18 @@ public class MyAccountController {
 	
 	@PostMapping("/newUser")
 	public String newUserPost (HttpServletRequest request, @ModelAttribute("email") String userEmail, @ModelAttribute("username") String username, Model model) throws Exception {
+		
 		model.addAttribute("classActiveNewAccount", true);
 		model.addAttribute("email", userEmail);
 		model.addAttribute("username", username);
+		
+		
+		if (!userEmail.contains("@")) {
+			
+			model.addAttribute("error", true);
+			return "myaccount";
+			
+		}
 		
 		
 		if (userService.findByUsername(username) != null) {
@@ -105,6 +111,10 @@ public class MyAccountController {
 		User user = new User();
 		user.setUsername(username);
 		user.setEmail(userEmail);
+		user.setAccountNonLocked(true);
+		//user.setLockTime(null);
+		user.setFailedAttempt((long) 0);
+		
 		
 		String password = SecurityUtility.randomPassword();
 		String encryptedPassword = SecurityUtility.passwordEncoder().encode(password);
@@ -112,7 +122,7 @@ public class MyAccountController {
 		
 		Role role = new Role();
 		role.setRoleId(1);
-		role.setName("ROLE_USER");
+		role.setName("USER");
 		Set<UserRole> userRoles = new HashSet<>();
 		userRoles.add(new UserRole (user, role));
 		userService.createUser(user, userRoles);
@@ -136,7 +146,6 @@ public class MyAccountController {
 		
 		
 	}
-	
-	
+		
 	
 }

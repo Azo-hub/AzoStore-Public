@@ -23,8 +23,6 @@ import com.AzoStore001.Service.ShoppingCartService;
 import com.AzoStore001.Service.UserService;
 
 
-
-
 @Controller
 @RequestMapping("/shoppingCart")
 
@@ -95,7 +93,7 @@ public class ShoppingCartController {
 		
 		redirectAttributes.addFlashAttribute("addProductSuccess", addProductSuccess);
 		
-		return      "redirect:/viewproductdetail/"+ product.getId();   /* "redirect:/productDetail?id="+product.getId(); */
+		return      "redirect:/viewproductdetail/"+ product.getId();   
 	
 			}
 	
@@ -136,19 +134,22 @@ public class ShoppingCartController {
 	
 	
 	@GetMapping("/deleteCartItem/{id}")
-	public String deleteCartItem (@PathVariable(name = "id") Long id, @ModelAttribute("cartItem") CartItem cartItem ) {
+	public String deleteCartItem (
+			@PathVariable(name = "id") Long id,
+			
+			@ModelAttribute("cartItem") CartItem cartItem
+			
+			) {
 		
 		//cartItem = cartItemService.findById(id);
 		
-		cartItemService.removeproductToCartItem(id);
-		cartItemService.removeCartItem(id);
+		cartItemService.removeproductToCartItem(id+1);
+		//cartItemService.removeCartItem(id);
 		return "redirect:/shoppingCart/cart";
 		
 				
 		
-	}
-	
-	
+	}	
 	
 	
 	

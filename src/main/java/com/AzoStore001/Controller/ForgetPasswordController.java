@@ -2,7 +2,7 @@ package com.AzoStore001.Controller;
 
 import java.util.UUID;
 
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;

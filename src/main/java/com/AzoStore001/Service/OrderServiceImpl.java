@@ -18,7 +18,6 @@ import com.AzoStore001.Repository.OrderRepository;
 
 
 
-
 @Service
 public class OrderServiceImpl implements OrderService {
 	
@@ -28,7 +27,7 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private CartItemService cartItemService;
 
-	
+
 	@Override
 	public synchronized Order createOrder(ShoppingCart shoppingCart, ShippingAddress shippingAddress, BillingAddress billingAddress,
 			Payment payment, String shippingMethod, User user) {
@@ -62,8 +61,6 @@ public class OrderServiceImpl implements OrderService {
 		
 		return order;
 	}
-		
-	
 	
 
 	@Override

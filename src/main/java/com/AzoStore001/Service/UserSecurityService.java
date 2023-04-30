@@ -10,7 +10,6 @@ import com.AzoStore001.Model.User;
 import com.AzoStore001.Repository.UserRepository;
 
 
-
 @Service
 public class UserSecurityService implements UserDetailsService {
 	

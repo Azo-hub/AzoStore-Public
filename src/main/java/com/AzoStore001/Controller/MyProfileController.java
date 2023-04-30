@@ -26,8 +26,6 @@ import com.AzoStore001.Service.UserService;
 import com.AzoStore001.Service.UserShippingService;
 
 
-
-
 @Controller
 public class MyProfileController {
 	

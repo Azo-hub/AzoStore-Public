@@ -11,7 +11,6 @@ import com.AzoStore001.Model.PasswordResetToken;
 import com.AzoStore001.Model.User;
 
 
-
 public interface PasswordResetTokenRepository extends JpaRepository<PasswordResetToken, Long> {
 	
 	PasswordResetToken findByToken (String token);

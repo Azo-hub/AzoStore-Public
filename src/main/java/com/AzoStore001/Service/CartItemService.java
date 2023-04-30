@@ -9,7 +9,6 @@ import com.AzoStore001.Model.ShoppingCart;
 import com.AzoStore001.Model.User;
 
 
-
 public interface CartItemService {
 	
 	List<CartItem> findByShoppingCart(ShoppingCart shoppingCart);

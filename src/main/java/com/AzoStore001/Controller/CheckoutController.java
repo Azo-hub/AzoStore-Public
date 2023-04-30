@@ -140,9 +140,11 @@ public class CheckoutController {
 		
 		
 		ShoppingCart shoppingCart = user.getShoppingCart();
+
 		String userEmail = shoppingCart.getUser().getEmail();
 		String userFirstName = shoppingCart.getUser().getFirstname();
 		String userLastName = shoppingCart.getUser().getLastname();
+
 		
 		for(UserShipping userShipping : userShippingList) {
 			if (userShipping.isUserShippingDefault()) {
@@ -167,6 +169,7 @@ public class CheckoutController {
 		model.addAttribute("userEmail", userEmail);
 		model.addAttribute("userFirstName", userFirstName);
 		model.addAttribute("userLastName", userLastName);
+
 		
 		List <String> stateList = NGConstants.listOfNGStatesName;
 		Collections.sort(stateList);
@@ -387,6 +390,7 @@ public class CheckoutController {
 	}
 		
 	}
-		
+
+	
 	
 }

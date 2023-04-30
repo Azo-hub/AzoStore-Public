@@ -1,46 +1,57 @@
 package com.AzoStore001;
 
-import static org.springframework.security.config.Customizer.withDefaults;
+
+import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.logout.LogoutHandler;
-import org.springframework.security.web.server.authentication.logout.DelegatingServerLogoutHandler;
-import org.springframework.security.web.server.authentication.logout.SecurityContextServerLogoutHandler;
-import org.springframework.security.web.server.authentication.logout.WebSessionServerLogoutHandler;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.AzoStore001.CustomHandler.CustomLoginFailureHandler;
+import com.AzoStore001.CustomHandler.CustomLoginSuccessHandler;
 import com.AzoStore001.Model.SecurityUtility;
 import com.AzoStore001.Service.UserSecurityService;
+import com.AzoStore001.oauth2.CustomOAuth2UserService;
+import com.AzoStore001.oauth2.OAuth2LoginSuccessHandler;
+
 
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity
-public class SecurityConfig {
+@EnableGlobalMethodSecurity (prePostEnabled = true)
+public class SecurityConfig{
 	@Autowired
 	private Environment env;
 	
+	@Autowired
+	private DataSource dataSource;
+
 	
 	@Autowired
 	private UserSecurityService userSecurityService;
 	
 	
+
+	private BCryptPasswordEncoder passwordEncoder () {
+		return SecurityUtility.passwordEncoder();
+	}
+
 	private BCryptPasswordEncoder bCryptPasswordEncoder() {
         return SecurityUtility.passwordEncoder();
     }
 	
 	
+
 	
 	
 	private static final String[] PUBLIC_MATCHERS = {
@@ -74,55 +85,81 @@ public class SecurityConfig {
 			"/product/**",
 			"/datatable/js/datatables.min.js",
 			"/viewproductdetails/**",
-			"/error"
+
+			"/error",
+			"/oauth2/**"
 			
 			
 	};
-
-
-    
+	
+	
 	@Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception  {
-		
-		AuthenticationManagerBuilder authenticationManagerBuilder = http
-                .getSharedObject(AuthenticationManagerBuilder.class);
-
-        authenticationManagerBuilder.userDetailsService(userSecurityService).passwordEncoder(bCryptPasswordEncoder());
-       
-		
-		http
-			.authorizeHttpRequests(auth -> {
-				auth.requestMatchers(PUBLIC_MATCHERS).permitAll();
-				auth.anyRequest().authenticated();
-			});
-
-
-         http
-         	.csrf(csrf -> csrf.disable())
-         	.cors(cors -> cors.disable())
-         	.formLogin(form -> 
-         		form
-         			.failureUrl("/login?error").defaultSuccessUrl("/")
-     				.loginPage("/login")
-     				.permitAll())
-         	
-         	.logout(logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-            .logoutSuccessUrl("/?logout").deleteCookies("remember-me").permitAll())
-            .rememberMe(withDefaults());
-         
-         return http.build();
-		
+	SecurityFilterChain SecurityFilterChain (HttpSecurity http) throws Exception {
+        http
+                .authorizeHttpRequests(requests -> 
+                	requests
+                        .antMatchers(PUBLIC_MATCHERS)
+                        .permitAll().anyRequest().authenticated());
+        http
+                .csrf(csrf -> 
+                	csrf.disable())
+                .cors(cors -> 
+                	cors.disable())
+                .formLogin(login -> 
+                	login.defaultSuccessUrl("/")
+                         .loginPage("/login").permitAll()
+                         .failureHandler(loginFailureHandler)
+                         .successHandler(loginSuccessHandler))
+                .oauth2Login(login -> 
+                	login
+                         .loginPage("/login")
+                         .userInfoEndpoint().userService(oAuth2UserService)
+                         .and()
+                         .successHandler(oAuth2LoginSuccessHandler))
+                .logout(logout -> 
+                	logout
+                		 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                         .logoutSuccessUrl("/?logout") /*.deleteCookies("remember-me") */ .permitAll())
+                .rememberMe(me -> me
+                        .tokenValiditySeconds(3 * 24 * 60 * 60)
+                        .tokenRepository(persistentTokenRepository()));
+        
+        return http.build();
+	
 	}
 	
 	
 	@Bean
-    AuthenticationManager authenticationManagerBean(AuthenticationConfiguration authenticationConfiguration)
-            throws Exception {
-        return authenticationConfiguration.getAuthenticationManager();
-    }
+	PersistentTokenRepository persistentTokenRepository() {
+		JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
+		tokenRepository.setDataSource(dataSource);
+		return tokenRepository;
+	}
 	
 	
 	
+	@Autowired
+	public void configureGlobal (AuthenticationManagerBuilder auth) throws Exception {
+		
+		auth.userDetailsService (userSecurityService).passwordEncoder (passwordEncoder());
+	}
 	
+	
+	@Autowired
+	private CustomLoginFailureHandler loginFailureHandler;
+	
+	@Autowired
+	private CustomLoginSuccessHandler loginSuccessHandler;
+	
+	@Autowired
+	private CustomOAuth2UserService oAuth2UserService;
+	
+	@Autowired
+	private OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler;
 
+
+			
 }
+
+
+    

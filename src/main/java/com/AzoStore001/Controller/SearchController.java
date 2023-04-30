@@ -17,7 +17,6 @@ import com.AzoStore001.Service.ProductService;
 import com.AzoStore001.Service.UserService;
 
 
-
 @Controller
 public class SearchController {
 	

@@ -5,8 +5,6 @@ import java.util.List;
 import com.AzoStore001.Model.Product;
 
 
-
-
 public interface ProductService {
 
 	Product save(Product product);

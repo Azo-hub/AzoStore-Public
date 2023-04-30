@@ -1,6 +1,7 @@
 package com.AzoStore001.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -9,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.AzoStore001.Model.AuthenticationProvider;
 import com.AzoStore001.Model.PasswordResetToken;
 import com.AzoStore001.Model.ShoppingCart;
 import com.AzoStore001.Model.User;
@@ -26,6 +28,9 @@ import com.AzoStore001.Repository.UserShippingRepository;
 
 @Service
 public class UserServiceImpl implements UserService {
+	
+	public static final int MAX_FAILED_ATTEMPTS = 3;
+	private static final long LOCK_TIME_DURATION = 24 * 60 * 60 * 1000;
 
 	private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
 
@@ -187,7 +192,95 @@ public class UserServiceImpl implements UserService {
 		return userRepository.getOne(id);
 	}
 
+
+	@Override
+	public void increaseFailedAttempt(User user) {
+		long newFailedAttempts = user.getFailedAttempt() + 1;
+		
+		userRepository.updateFailedAttempt(newFailedAttempts, user.getUsername());
+		
+		
+		
+	}
+
+	@Override
+	public void lock(User user) {
+		
+		user.setAccountNonLocked(false);
+		user.setLockTime(new Date());
+		
+		userRepository.save(user);
+		
+	}
 	
+	@Override
+	public boolean unlock(User user) {
+		
+		long lockTimeInMillis = user.getLockTime().getTime();
+		long currentTimeInMillis = System.currentTimeMillis();
+		
+		if (lockTimeInMillis + LOCK_TIME_DURATION < currentTimeInMillis) {
+			
+			user.setAccountNonLocked(true);
+			user.setLockTime(null);
+			user.setFailedAttempt((long) 0);
+			
+			userRepository.save(user);
+			
+			return true;
+		}
+		
+		return false;
+		
+	}
+
+	@Override
+	public void resetFailedAttempts(String username) {
+		
+		userRepository.updateFailedAttempt(0, username);
+		
+	}
+
+	@Override
+	public void createNewUserAfterOAuthLoginSuccess(Set<UserRole> userRoles, String email, String name, AuthenticationProvider provider) {
+		// TODO Auto-generated method stub
+		
+		User user = new User();
+		user.setEmail(email);
+		user.setFirstname(name);
+		user.setAccountNonLocked(true);
+		//user.setLockTime(null);
+		user.setFailedAttempt((long) 0);
+		
+		user.setOauth_provider(provider);
+		user.setUsername(name);
+		
+		for (UserRole ur : userRoles) {
+			roleRepository.save(ur.getRole());
+		}
+		
+		user.getUserRoles().addAll(userRoles);
+		
+		ShoppingCart shoppingCart = new ShoppingCart();
+		shoppingCart.setUser(user);
+		user.setShoppingCart(shoppingCart);
+		
+		user.setUserShippingList (new ArrayList <UserShipping> ());
+		
+		user.setUserPaymentList (new ArrayList <UserPayment> ());
+
+		userRepository.save(user);
+
+	}
+
+	@Override
+	public void updateUserAfterOAuthLoginSuccess(User user, String name, AuthenticationProvider provider) {
+		// TODO Auto-generated method stub
+		user.setUsername(name);
+		user.setFirstname(name);
+		user.setOauth_provider(provider);
+		userRepository.save(user);
+	}
 
 	
 

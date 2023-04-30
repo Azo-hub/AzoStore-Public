@@ -9,8 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.AzoStore001.Model.Product;
 
-
-
 @Repository
 public interface ProductRepository extends JpaRepository <Product, Long> {
 

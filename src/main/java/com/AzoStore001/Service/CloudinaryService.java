@@ -14,7 +14,6 @@ import com.cloudinary.Singleton;
 import com.cloudinary.utils.ObjectUtils;
 
 
-
 @Service
 public class CloudinaryService {
 		
