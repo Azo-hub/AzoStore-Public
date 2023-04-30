@@ -1,7 +1,5 @@
 package com.AzoStore001.Controller;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -77,17 +75,14 @@ public class AdminPortalProductController {
 		try {
 			byte[] bytes = productImage.getBytes();
 			String name = "product" + product.getId();
-			File file = new File(name);
+			/*File file = new File(name);
 			FileOutputStream fos = new FileOutputStream(file);
 			fos.write(bytes);
-			fos.close();
+			fos.close();*/
 			Map uploadResult = cloudinary.uploader().upload(bytes, ObjectUtils.asMap("resource_type", "image", 
 					"overwrite", "true"));
 			String publicId = uploadResult.get("public_id").toString();
-			/*
-			 * version += "/v"+ uploadResult.get("version").toString();
-			 * model.addAttribute("version",version);
-			 */
+			
 			cloudinary.uploader().rename(publicId, name, ObjectUtils.asMap("resource_type", "image", 
 					"overwrite", "true"));
 
@@ -147,10 +142,7 @@ public class AdminPortalProductController {
 				cloudinary.uploader().destroy(name, ObjectUtils.asMap("resource_type", "image", 
 						"overwrite", "true"));
 
-				File file = new File(name);
-				FileOutputStream fos = new FileOutputStream(file);
-				fos.write(bytes);
-				fos.close();
+				
 				Map uploadResult = cloudinary.uploader().upload(bytes, ObjectUtils.asMap("resource_type", "image", 
 						"overwrite", "true"));
 				String publicId = uploadResult.get("public_id").toString();
