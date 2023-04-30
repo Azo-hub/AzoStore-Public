@@ -10,19 +10,16 @@ import com.AzoStore001.Model.User;
 
 
 @Repository
+
 public interface UserRepository extends JpaRepository <User, Long> {
 	
 	User findByUsername (String username);
 	
 	User findByEmail (String email);
 	
-	
 	@Transactional
 	@Query("UPDATE User u SET u.failedAttempt = ?1 WHERE u.username = ?2")
 	@Modifying
 	public void updateFailedAttempt(long failedAttempt, String username);
-
-
-	
 
 }

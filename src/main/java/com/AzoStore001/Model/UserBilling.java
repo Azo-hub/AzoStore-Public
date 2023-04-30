@@ -1,5 +1,6 @@
 package com.AzoStore001.Model;
 
+
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;

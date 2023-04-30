@@ -15,16 +15,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import lombok.Data;
 
 
 @Entity
 @Table(name = "user_order")
-public class Order  implements Serializable {
-	
-	/**
-	 * 
-	 */
+public class Order implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,7 +29,6 @@ public class Order  implements Serializable {
 	private String shippingMethod;
 	private String orderStatus;
 	private BigDecimal orderTotal;
-	
 	
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
 	private List<CartItem> cartItemList;
@@ -164,5 +158,6 @@ public class Order  implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
 
 }

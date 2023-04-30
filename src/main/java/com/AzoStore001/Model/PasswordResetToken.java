@@ -1,6 +1,6 @@
 package com.AzoStore001.Model;
 
-import java.io.Serializable;
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -13,12 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
-public class PasswordResetToken  implements Serializable {
+public class PasswordResetToken {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	private static final int EXPIRATION = 60 * 24;
 	

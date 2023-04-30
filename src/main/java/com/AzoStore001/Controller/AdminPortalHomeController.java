@@ -7,16 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/adminportal")
+@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('EDITOR')")
 public class AdminPortalHomeController {
 	
-	@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('EDITOR')")
 	@GetMapping
 	public String adminHome() {
 		
 		return "adminhome";
 	}
-	
-	
-	
+
 
 }

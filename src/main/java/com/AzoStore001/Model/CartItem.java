@@ -1,6 +1,6 @@
 package com.AzoStore001.Model;
 
-import java.io.Serializable;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -19,12 +19,8 @@ import lombok.Data;
 
 @Entity
 @Data
-public class CartItem implements Serializable {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class CartItem {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;

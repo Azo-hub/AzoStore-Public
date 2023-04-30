@@ -23,7 +23,6 @@ import com.AzoStore001.Service.ShoppingCartService;
 import com.AzoStore001.Service.UserService;
 
 
-
 @Controller
 @RequestMapping("/shoppingCart")
 
@@ -94,7 +93,7 @@ public class ShoppingCartController {
 		
 		redirectAttributes.addFlashAttribute("addProductSuccess", addProductSuccess);
 		
-		return      "redirect:/viewproductdetail/"+ product.getId();   /* "redirect:/productDetail?id="+product.getId(); */
+		return      "redirect:/viewproductdetail/"+ product.getId();   
 	
 			}
 	
@@ -150,9 +149,7 @@ public class ShoppingCartController {
 		
 				
 		
-	}
-	
-	
+	}	
 	
 	
 	

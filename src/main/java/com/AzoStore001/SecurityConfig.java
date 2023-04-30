@@ -1,5 +1,6 @@
 package com.AzoStore001;
 
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ import com.AzoStore001.oauth2.CustomOAuth2UserService;
 import com.AzoStore001.oauth2.OAuth2LoginSuccessHandler;
 
 
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity (prePostEnabled = true)
@@ -33,14 +35,23 @@ public class SecurityConfig{
 	
 	@Autowired
 	private DataSource dataSource;
+
 	
 	@Autowired
 	private UserSecurityService userSecurityService;
 	
 	
+
 	private BCryptPasswordEncoder passwordEncoder () {
 		return SecurityUtility.passwordEncoder();
 	}
+
+	private BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return SecurityUtility.passwordEncoder();
+    }
+	
+	
+
 	
 	
 	private static final String[] PUBLIC_MATCHERS = {
@@ -74,6 +85,7 @@ public class SecurityConfig{
 			"/product/**",
 			"/datatable/js/datatables.min.js",
 			"/viewproductdetails/**",
+
 			"/error",
 			"/oauth2/**"
 			
@@ -145,4 +157,9 @@ public class SecurityConfig{
 	@Autowired
 	private OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler;
 
+
+			
 }
+
+
+    

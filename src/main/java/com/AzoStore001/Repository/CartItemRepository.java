@@ -12,16 +12,19 @@ import com.AzoStore001.Model.Order;
 import com.AzoStore001.Model.Product;
 import com.AzoStore001.Model.ShoppingCart;
 
+
 @Repository
 @Transactional
 public interface CartItemRepository extends JpaRepository <CartItem, Long> {
 	
 	List<CartItem> findByShoppingCart(ShoppingCart shoppingCart);
 
+
 	void deleteByProduct(Long id);
 
 	List<CartItem> findByOrder(Order order);
 
 	void deleteByProduct(Product product);
+
 
 }

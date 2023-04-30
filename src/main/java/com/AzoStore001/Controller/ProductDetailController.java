@@ -30,7 +30,6 @@ public class ProductDetailController {
 	
 	
 	@GetMapping("/viewproductdetail/{id}")
-		//public String bookDetails(@PathParam("id") Long id, Model model, Principal principal) {
 	public String productDetails(
 			@ModelAttribute("addProductSuccess") String addProductSuccess,
 			@PathVariable(name = "id") Long id, Model model,  Principal principal) {

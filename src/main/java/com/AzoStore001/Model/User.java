@@ -23,12 +23,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 @Entity
-@Getter
-@Setter
+@Data
 
 public class User implements UserDetails{
 	
@@ -48,6 +46,7 @@ public class User implements UserDetails{
 	private String phone;
 	private boolean enabled=true;
 	
+
 	private Long failedAttempt;
 	
 	
@@ -60,6 +59,7 @@ public class User implements UserDetails{
 	private AuthenticationProvider oauth_provider;
 	
 	
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<UserShipping> userShippingList;
 	
@@ -100,7 +100,9 @@ public class User implements UserDetails{
 	@Override
 	public boolean isAccountNonLocked() {
 		// TODO Auto-generated method stub
+
 		return accountNonLocked;
+
 	}
 
 

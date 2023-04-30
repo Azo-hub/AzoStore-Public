@@ -25,6 +25,7 @@ import com.AzoStore001.Repository.UserRepository;
 import com.AzoStore001.Repository.UserShippingRepository;
 
 
+
 @Service
 public class UserServiceImpl implements UserService {
 	
@@ -190,6 +191,7 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userRepository.getOne(id);
 	}
+
 
 	@Override
 	public void increaseFailedAttempt(User user) {

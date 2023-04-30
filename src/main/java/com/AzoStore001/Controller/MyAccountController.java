@@ -30,13 +30,11 @@ import com.AzoStore001.Model.UserRole;
 import com.AzoStore001.Service.UserSecurityService;
 import com.AzoStore001.Service.UserService;
 
+
+
+
 @Controller
 public class MyAccountController {
-	
-	//private User user;
-	
-	
-	
 	
 	@Autowired
 	private JavaMailSender mailSender;
@@ -148,7 +146,6 @@ public class MyAccountController {
 		
 		
 	}
-	
-	
+		
 	
 }

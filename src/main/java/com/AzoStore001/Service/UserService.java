@@ -30,7 +30,7 @@ public interface UserService {
 	void updateUserBilling(UserBilling userBilling, UserPayment userPayment, User user);
 	
 	void setUserDefaultPayment (Long userPaymentId, User user);
-	
+
 	void increaseFailedAttempt(User user);
 
 	void lock(User user);
@@ -39,20 +39,14 @@ public interface UserService {
 
 	void resetFailedAttempts(String username);
 
-	
-	
 	void updateUserShipping(UserShipping userShipping, User user);
 	
 	void setUserDefaultShipping (Long defaultShippingId, User user);
-	
+
 	void createNewUserAfterOAuthLoginSuccess(Set<UserRole> userRoles, String email, String name,
 			AuthenticationProvider provider);
 
-	
-
-	
-
 	void updateUserAfterOAuthLoginSuccess(User user, String name, AuthenticationProvider provider);
 
-	
+
 }

@@ -1,5 +1,6 @@
 package com.AzoStore001.Controller;
 
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -14,6 +15,7 @@ public class LoginController {
 
 	@GetMapping("/login")
 	public String login(Model model, HttpServletRequest request) {
+
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		
 		if(authentication == null || authentication instanceof AnonymousAuthenticationToken) {
@@ -24,6 +26,7 @@ public class LoginController {
 		}
 		
 		return "redirect:/";
+
 	}
 
 }

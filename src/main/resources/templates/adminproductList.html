@@ -5,12 +5,24 @@
 
 <head th:replace="fragments::html_head">
 
+
+<!-- Datatable -->
+
+<link rel="stylesheet" type="text/css"
+	href="datatable/css/datatables.min.css" />
+
+<link rel="stylesheet"
+	href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
+	
 </head>
 
 
 <body>
 
 	<div th:replace="fragments::menubar" class="w-100"></div>
+
+	<div th:replace="fragments::menubar" class="w-100 mb-4"></div>
+
 
 	<table class="table table-md table-bordered table-hover table-striped table-dark my-5" id="productlisttable">
 		
@@ -68,6 +80,16 @@
 
 
 <footer th:replace="fragments::html_foot"> </footer>
+
+
+
+<script type="text/javascript" src="datatable/js/datatables.min.js"></script>
+
+		<script type="text/javascript"
+			src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
+
+
 <script>
 		$(document).ready(function() {
 			$('#productlisttable').DataTable();

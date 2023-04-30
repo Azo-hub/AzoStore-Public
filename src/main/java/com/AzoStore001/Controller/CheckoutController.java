@@ -39,6 +39,7 @@ import com.AzoStore001.Service.UserShippingService;
 
 
 
+
 @Controller
 public class CheckoutController {
 	
@@ -139,6 +140,11 @@ public class CheckoutController {
 		
 		
 		ShoppingCart shoppingCart = user.getShoppingCart();
+
+		String userEmail = shoppingCart.getUser().getEmail();
+		String userFirstName = shoppingCart.getUser().getFirstname();
+		String userLastName = shoppingCart.getUser().getLastname();
+
 		
 		for(UserShipping userShipping : userShippingList) {
 			if (userShipping.isUserShippingDefault()) {
@@ -160,6 +166,10 @@ public class CheckoutController {
 		model.addAttribute("billingAddress", billingAddress);
 		model.addAttribute("cartItemList", cartItemList);
 		model.addAttribute("shoppingCart", user.getShoppingCart());
+		model.addAttribute("userEmail", userEmail);
+		model.addAttribute("userFirstName", userFirstName);
+		model.addAttribute("userLastName", userLastName);
+
 		
 		List <String> stateList = NGConstants.listOfNGStatesName;
 		Collections.sort(stateList);
@@ -380,8 +390,7 @@ public class CheckoutController {
 	}
 		
 	}
-	
-	
+
 	
 	
 }

@@ -14,8 +14,10 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Role  implements Serializable {
-	
+public class Role implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private int roleId;
 	private String name;
