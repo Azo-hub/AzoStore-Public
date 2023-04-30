@@ -31,9 +31,9 @@ public class AzoStore2Application /* implements CommandLineRunner */ {
 	public static void main(String[] args) {
 		// Set Cloudinary instance
 	    Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
-	            "cloud_name", "azostore", // insert here you cloud name
-	            "api_key", "873821249613849", // insert here your api code
-	            "api_secret", "GPu-lx7TZYpi8VXxeo-8mvW0ri4")); // insert here your api secret
+	            "cloud_name", "**********", // insert here you cloud name
+	            "api_key", "*********", // insert here your api code
+	            "api_secret", "**********")); // insert here your api secret
 	    		SingletonManager manager = new SingletonManager();
 	    		manager.setCloudinary(cloudinary);
 	    		manager.init();
