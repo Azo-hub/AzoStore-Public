@@ -23,7 +23,7 @@ The following technologies and solutions were present in this project as highlig
 - Checkout page
 * Admin portal for site administrator to add new product and edit existing one
 ## License
-`[Apache License 2.0]`(https://github.com/Azo-hub/AzoStore-Public/blob/master/LICENSE)
+[`Apache License 2.0`](https://github.com/Azo-hub/AzoStore-Public/blob/master/LICENSE)
 
 
 
