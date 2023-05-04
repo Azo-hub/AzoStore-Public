@@ -13,4 +13,14 @@ The following technologies and solutions were present in this project as highlig
 + Thymeleaf View Template + Bootstrap;
 - Mysql;
 * Oauth2;
++ Cloudinary;
+- Gmail Smtp;
+### Some modules and services
+- User Authentication
++ Role-based Authorization
+* Social Login using gmail account
++ Shopping Cart
+- Checkout page
+* Admin portal for site administrator to add new product and edit existing one
+
 
