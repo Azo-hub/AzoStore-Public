@@ -1,6 +1,6 @@
 # AzoStore - Ecommerce Website :white_check_mark:
 This project was built with Spring Boot as a way of learning and testing some Spring Framework technologies.
-## Index
+## Index :pushpin:
 - [About the Project](https://github.com/Azo-hub/AzoStore-Public#about-the-project)
 * [License](https://github.com/Azo-hub/AzoStore-Public#license)
 ## About the Project
