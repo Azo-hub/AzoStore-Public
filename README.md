@@ -6,7 +6,7 @@ This project was built with Spring Boot as a way of learning and testing some Sp
 ## About the Project
 The following technologies and solutions were present in this project as highlighted below:
 - Java 8;
-* Spring Boot; 
+* Spring Boot version 2.7.12-SNAPSHOT; 
 + Spring Security;
 - Spring Data JPA;
 * Hibernate;
