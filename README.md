@@ -23,6 +23,7 @@ The following technologies and solutions were present in this project as highlig
 - Checkout page
 * Admin portal for site administrator to add new product and edit existing one
 ## License
+`Apache License 2.0`
 
 
 
