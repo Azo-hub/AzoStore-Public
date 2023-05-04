@@ -1,7 +1,7 @@
 # AzoStore - Ecommerce Website
 This project was built with Spring Boot as a way of learning and testing some Spring Framework technologies.
 ## Index
-- About the Project
+- [About the Project](https://github.com/Azo-hub/AzoStore-Public#about-the-project)
 * License
 ## About the Project
 Follow the technologies and solutions present in this project below:
