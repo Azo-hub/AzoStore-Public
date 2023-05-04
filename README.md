@@ -3,4 +3,6 @@ This project was built with Spring Boot as a way of learning and testing some Sp
 ## Index
 - About the Project
 * License
+## About the Project
+Follow the technologies and solutions present in this project below:
 
