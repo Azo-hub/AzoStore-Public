@@ -8,13 +8,11 @@ spring:
       client:
         registration:
           google:
-            client-id:***************************************.com
+            client-id: ********************************************************.com
             client-secret: ********************************
             scope:
             - email
             - profile
-            
-            
             
             
             

@@ -130,10 +130,31 @@
 						<div class="panel-group">
 							<div class="panel panel-default">
 								<div class="panel-body" style="margin-top: 20px;">
+								
+									<div class = "container-fluid my-5">
+																			
+										<div class = "row my-3">
+											<div class = "col-md-12" align = "center">
+												<span><a type = "button" th:href = "@{/oauth2/authorization/google}" class="btn btn-outline-success" ><i class = "fa fa-google" aria-hidden = "true" ></i>&nbsp;&nbsp;
+												&nbsp;&nbsp;&nbsp;&nbsp; Login with Google</a>
+												</span>
+											</div>
+											
+										</div>
+										
+										<hr style = "margin-bottom:-10px;" />
+										
+										<div class = "row">
+											<div class = "col-md-12">
+												
+												<div align = "center" style = "margin-top:-1px;"><strong>OR</strong></div>
+											</div>
+										</div>
+										
+									</div>
+		
 									
-									<!-- <marquee>Hello! Please Login</marquee> -->
-																	
-							
+								
 									<!--  	<div th:if="${param.error != null}" style="color: red;">
 									Incorrect
 										Username or password</div> -->
@@ -160,27 +181,6 @@
 										<button type="submit" class="btn btn-success">Log in</button>
 
 									</form>
-									
-									<hr style = "margin-bottom:-10px;" />
-									<div class = "container-fluid">
-										<div class = "row">
-											<div class = "col-md-12">
-												
-												<div align = "center" style = "margin-top:-1px;"><strong>OR</strong></div>
-											</div>
-										</div>
-									
-										<div class = "row my-3">
-											<div class = "col-md-12" align = "center">
-												<span><a type = "button" th:href = "@{/oauth2/authorization/google}" class="btn btn-outline-success" ><i class = "fa fa-google" aria-hidden = "true" ></i>&nbsp;&nbsp;
-												&nbsp;&nbsp;&nbsp;&nbsp; Login with Google</a>
-												</span>
-											</div>
-											
-										</div>
-									</div>
-								
-									
 									
 									
 								</div>
