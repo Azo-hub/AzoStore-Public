@@ -59,7 +59,8 @@ public class User implements UserDetails{
 	private AuthenticationProvider oauth_provider;
 	
 	
-
+	
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<UserShipping> userShippingList;
 	

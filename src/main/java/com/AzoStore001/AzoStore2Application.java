@@ -31,9 +31,9 @@ public class AzoStore2Application /* implements CommandLineRunner */ {
 	public static void main(String[] args) {
 		// Set Cloudinary instance
 	    Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
-	            "cloud_name", "**********", // insert here you cloud name
-	            "api_key", "*********", // insert here your api code
-	            "api_secret", "**********")); // insert here your api secret
+	    		"cloud_name", "************", // insert here you cloud name
+	            "api_key", "***************", // insert here your api code
+	            "api_secret", "********************")); // insert here your api secret
 	    		SingletonManager manager = new SingletonManager();
 	    		manager.setCloudinary(cloudinary);
 	    		manager.init();
@@ -67,32 +67,6 @@ public class AzoStore2Application /* implements CommandLineRunner */ {
 		
 
 		
-		
-	/*	
-		
-		User editorUser = new User();
-		editorUser.setFirstname("Ridwan");
-		editorUser.setLastname("Azeez");
-		editorUser.setUsername("editor1");
-		editorUser.setEnabled(true);
-		editorUser.setAccountNonLocked(true);
-		editorUser.setFailedAttempt((long) 0);
-		editorUser.setPassword(SecurityUtility.passwordEncoder().encode("editor1"));
-		editorUser.setEmail("haycodeeditor101@gmail.com");
-		Set<UserRole> userRoles1 = new HashSet<>();
-		Role role3 = new Role();
-		role2.setRoleId(3);
-		role2.setName("EDITOR");
-		userRoles1.add(new UserRole(editorUser, role2));
-		
-		userService.createUser(editorUser, userRoles1);
-		
-
-	*/	
-		
-		
-		
-			/*	
 	}
 
 
